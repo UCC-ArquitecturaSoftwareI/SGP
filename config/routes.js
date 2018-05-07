@@ -27,6 +27,9 @@ module.exports.routes = {
   '/': {
     view: 'pages/homepage'
   },
+  '/login':{
+    view: 'pages/usuario/login'
+  }
 
   /***************************************************************************
   *                                                                          *
