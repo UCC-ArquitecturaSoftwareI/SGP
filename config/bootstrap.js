@@ -29,6 +29,17 @@ module.exports.bootstrap = async function(done) {
 
   // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
   // (otherwise your server will never lift, since it's waiting on the bootstrap)
+
+  if (await Usuario.count() > 0) {
+    return done();
+  }
+
+  await Usuario.createEach([
+    { correo: 'a@a.a', contrasenia: '1234', nombre: "Admin", apellido: "Admin" },
+    //{ emailAddress: 'rachael@example.com', fullName: 'Rachael Shaw', },
+    // etc.
+  ]);
+
   return done();
 
 };

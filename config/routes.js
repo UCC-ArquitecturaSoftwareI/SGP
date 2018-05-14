@@ -17,7 +17,7 @@ module.exports.routes = {
 
   /***************************************************************************
   *                                                                          *
-  * Make the view located at `views/homepage.ejs` your home page.            *
+  * Make the view located at `views/inicio.ejs` your home page.            *
   *                                                                          *
   * (Alternatively, remove this and add an `index.html` file in your         *
   * `assets` directory)                                                      *
@@ -25,12 +25,31 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'pages/homepage'
+    view: 'pages/index',
+    locals:{
+      layout: false
+    }
   },
-  '/login':{
-    view: 'pages/usuario/login'
+  'GET /login':{
+    view: 'pages/usuario/login',
+    locals:{
+      layout: false
+    }
+  },
+  'POST /login': {
+    controller: "UsuarioController",
+    action: "login"
   }
+  ,
+  '/logout': {
+    controller: "UsuarioController",
+    action: "logout"
+  },
 
+  '/inicio': {
+    controller: 'UsuarioController',
+    action: 'dashboard'
+  },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

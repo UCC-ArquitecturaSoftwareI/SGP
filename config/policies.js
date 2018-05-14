@@ -17,6 +17,9 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': "autentificado",
+  UsuarioController: {
+    'login': true,
+  }
 
 };
