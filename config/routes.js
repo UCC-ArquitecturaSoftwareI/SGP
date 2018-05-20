@@ -46,13 +46,12 @@ module.exports.routes = {
     }
   },
   'POST /login': {
-    controller: "UsuarioController",
-    action: "login"
-  }
-  ,
+    controller: 'UsuarioController',
+    action: 'login'
+  },
   '/logout': {
-    controller: "UsuarioController",
-    action: "logout"
+    controller: 'UsuarioController',
+    action: 'logout'
   },
 
 

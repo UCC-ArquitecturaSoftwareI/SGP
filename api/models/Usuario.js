@@ -13,24 +13,24 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     correo: {
-      type: "string",
+      type: 'string',
       required: true
     },
     nombre: {
-      type: "string",
+      type: 'string',
       required: true
     },
     apellido: {
-      type: "string",
+      type: 'string',
       required: true
     },
     contrasenia:{
-      type: "string",
+      type: 'string',
       required: true
     },
     roles:{
-      collection: "rol",
-      via: "usuario"
+      collection: 'rol',
+      via: 'usuario'
     }
 
 

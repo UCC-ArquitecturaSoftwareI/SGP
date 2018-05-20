@@ -14,10 +14,10 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
     nombre:{
-      type: "string"
+      type: 'string'
     },
     usuario: {
-      model: "usuario"
+      model: 'usuario'
     }
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

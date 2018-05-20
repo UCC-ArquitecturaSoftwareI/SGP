@@ -7,13 +7,13 @@
 
 module.exports = {
   login: async function (req, res) {
-    var usuario = req.param("correo");
-    var contrasenia = req.param("contrasenia");
+    var usuario = req.param('correo');
+    var contrasenia = req.param('contrasenia');
 
-    console.log( usuario + " " + contrasenia)
+    console.log( usuario + ' ' + contrasenia);
 
     if (!(usuario && contrasenia)) {
-      res.send("No ingreso usuario o contraseña");
+      res.send('No ingreso usuario o contraseña');
       // TODO: mostrar view de login con error
     } else {
 
@@ -23,7 +23,7 @@ module.exports = {
       });
 
       if (!user) {
-        res.send("Usuario o contraseña invalida");
+        res.send('Usuario o contraseña invalida');
         // TODO: mostrar view de login con error
       }else{
         req.session.usuario = user;

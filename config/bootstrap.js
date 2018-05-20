@@ -35,17 +35,17 @@ module.exports.bootstrap = async function (done) {
   }
 
   const roles = await Rol.createEach([
-    {nombre: "Docente"},
-    {nombre: "Administrador"},
-    {nombre: "Bautismo"},
-    {nombre: "Docente"},
-    {nombre: "Cursos"},
+    {nombre: 'Docente'},
+    {nombre: 'Administrador'},
+    {nombre: 'Bautismo'},
+    {nombre: 'Docente'},
+    {nombre: 'Cursos'},
   ]).fetch();
 
-  const rolAdmin = roles.find(rol => rol.nombre === "Administrador");
+  const rolAdmin = roles.find(rol => rol.nombre === 'Administrador');
 
   await Usuario.create(
-    {correo: 'a@a.a', contrasenia: '1234', nombre: "Admin", apellido: "Admin", roles: [rolAdmin.id]}
+    {correo: 'a@a.a', contrasenia: '1234', nombre: 'Admin', apellido: 'Admin', roles: [rolAdmin.id]}
   );
 
   return done();
