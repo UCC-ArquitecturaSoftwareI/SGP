@@ -24,16 +24,25 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  /*
+        Pagina de la parroquia
+  */
+
   '/': {
-    view: 'pages/index',
+    view: 'pages/pagina/index',
     locals:{
-      layout: false
+      layout: 'layouts/layout_pagina'
     }
   },
+
+
+  /*
+        Sistema de Gestión de Usuarios
+   */
   'GET /login':{
     view: 'pages/usuario/login',
     locals:{
-      layout: false
+      layout: 'layouts/layout_pagina'
     }
   },
   'POST /login': {
@@ -46,36 +55,54 @@ module.exports.routes = {
     action: "logout"
   },
 
+
+  /*
+        Pagina principal del sistema
+   */
   '/inicio': {
     controller: 'UsuarioController',
     action: 'dashboard'
   },
-  /***************************************************************************
-  *                                                                          *
-  * More custom routes here...                                               *
-  * (See https://sailsjs.com/config/routes for examples.)                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the routes in this file, it   *
-  * is matched against "shadow routes" (e.g. blueprint routes).  If it does  *
-  * not match any of those, it is matched against static assets.             *
-  *                                                                          *
-  ***************************************************************************/
 
 
-  //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
-  //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
-  //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
+  /*
+        ABM Usuarios (no hay grupo)
+   */
 
 
 
-  //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
-  //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
-  //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
+
+  /*
+        ABM Personas (AbstractTeam)
+   */
 
 
-  //  ╔╦╗╦╔═╗╔═╗
-  //  ║║║║╚═╗║
-  //  ╩ ╩╩╚═╝╚═╝
+
+
+  /*
+        ABM Alumnos (PUBG)
+   */
+
+
+
+
+  /*
+        ABM Cursos (ABMCursos)
+   */
+
+
+
+
+  /*
+        Gestión de Cursos (Alpha)
+   */
+
+
+
+
+  /*
+        Asistencia (Fortnite)
+   */
 
 
 };
