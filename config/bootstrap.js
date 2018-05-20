@@ -9,7 +9,7 @@
  * https://sailsjs.com/config/bootstrap
  */
 
-module.exports.bootstrap = async function(done) {
+module.exports.bootstrap = async function (done) {
 
   // By convention, this is a good place to set up fake data during development.
   //
@@ -34,11 +34,19 @@ module.exports.bootstrap = async function(done) {
     return done();
   }
 
-  await Usuario.createEach([
-    { correo: 'a@a.a', contrasenia: '1234', nombre: "Admin", apellido: "Admin" },
-    //{ emailAddress: 'rachael@example.com', fullName: 'Rachael Shaw', },
-    // etc.
-  ]);
+  const roles = await Rol.createEach([
+    {nombre: "Docente"},
+    {nombre: "Administrador"},
+    {nombre: "Bautismo"},
+    {nombre: "Docente"},
+    {nombre: "Cursos"},
+  ]).fetch();
+
+  const rolAdmin = roles.find(rol => rol.nombre === "Administrador");
+
+  await Usuario.create(
+    {correo: 'a@a.a', contrasenia: '1234', nombre: "Admin", apellido: "Admin", roles: [rolAdmin.id]}
+  );
 
   return done();
 
