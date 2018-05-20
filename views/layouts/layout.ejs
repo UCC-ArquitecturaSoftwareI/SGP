@@ -61,6 +61,8 @@
   </head>
 
   <body>
+
+  <% if(res.statusCode != '404'){ %>
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Sistema de Gestion de Parroquia</a>
@@ -225,7 +227,10 @@
       </ol>
       <div class="row">
         <div class="col-12">
+
+          <% } %>
           <%- body %>
+          <% if(res.statusCode != '404'){%>
         </div>
       </div>
     </div>
@@ -344,5 +349,7 @@
     <!--SCRIPTS-->
     <script src="/dependencies/sails.io.js"></script>
     <!--SCRIPTS END-->
+
+  <% } %>
   </body>
 </html>
