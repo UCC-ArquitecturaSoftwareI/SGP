@@ -94,7 +94,12 @@ module.exports.routes = {
 
   /*
         Gestión de Cursos (Alpha)
-   */
+    */
+  '/inscripcion':{
+    controller: 'InscripcionController',
+    action: 'inscripcion'
+  }
+
 
 
 
