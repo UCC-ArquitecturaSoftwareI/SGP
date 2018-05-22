@@ -75,7 +75,26 @@ module.exports.routes = {
         ABM Personas (AbstractTeam)
    */
 
-
+  '/lista':{
+    controller: 'PersonaController',
+    action: 'lista',
+  },
+  'POST /agregar': {
+    controller: 'PersonaController',
+    action: 'agregar'
+  },
+  'POST /modificar': {
+    controller: 'PersonaController',
+    action: 'modificar'
+  },
+  '/eliminar': {
+    controller: 'PersonaController',
+    action: 'eliminar'
+  },
+  '/buscar': {
+    controller: 'PersonaController',
+    action: 'buscar'
+  },
 
 
   /*
