@@ -98,9 +98,11 @@ module.exports.routes = {
 
 
   /*
-        ABM Alumnos (PUBG)
+        ABM Bautismos (PUBG)
    */
-
+  '/addBautismo': {
+  view: 'pages/bautismos/addBautismo'
+  },
 
 
 
