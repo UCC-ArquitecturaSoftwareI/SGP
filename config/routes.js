@@ -101,7 +101,7 @@ module.exports.routes = {
         ABM Bautismos (PUBG)
    */
   '/addBautismo': {
-  view: 'pages/bautismos/addBautismo'
+    view: 'pages/bautismos/addBautismo'
   },
 
 

@@ -1,5 +1,5 @@
 /**
- * Usuario.js
+ * TurnoBautismo.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -9,9 +9,9 @@ module.exports = {
 
   attributes: {
 
-    correo: {
-      type: 'string',
-      required: true
+    padrinos: {
+      collection: 'persona',
+      via: 'padrinazgos',
     },
 
     nombre: {
@@ -19,24 +19,19 @@ module.exports = {
       required: true
     },
 
-    apellido: {
+    dni: {
       type: 'string',
       required: true
     },
 
-    contrasenia: {
+    fecha: {
       type: 'string',
       required: true
     },
 
-    roles: {
-      collection: 'rol',
-      via: 'usuario'
-    },
-
-    docencia: {
-      collection: 'curso',
-      via: 'docentes'
+    turno: {
+      type: 'string',
+      required: true
     },
 
   },
