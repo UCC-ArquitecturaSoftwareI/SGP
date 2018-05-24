@@ -30,7 +30,7 @@ module.exports.bootstrap = async function (done) {
   // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
   // (otherwise your server will never lift, since it's waiting on the bootstrap)
 
-  if (await Usuario.count() > 0) {
+  if (await Usuario.count() > 0) { // si no hay por lo menos un usuario, se
     return done();
   }
 
@@ -38,7 +38,6 @@ module.exports.bootstrap = async function (done) {
     {nombre: 'Docente'},
     {nombre: 'Administrador'},
     {nombre: 'Bautismo'},
-    {nombre: 'Docente'},
     {nombre: 'Cursos'},
   ]).fetch();
 
