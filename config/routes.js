@@ -98,9 +98,11 @@ module.exports.routes = {
 
 
   /*
-        ABM Alumnos (PUBG)
+        ABM Bautismos (PUBG)
    */
-
+  '/addBautismo': {
+    view: 'pages/bautismos/addBautismo'
+  },
 
 
 
@@ -113,13 +115,19 @@ module.exports.routes = {
 
   /*
         Gestión de Cursos (Alpha)
-   */
+    */
+  '/inscripcion':{
+    controller: 'InscripcionController',
+    action: 'inscripcion'
+  }
+
 
 
 
 
   /*
         Asistencia (Fortnite)
+
    */
 
 
