@@ -1,29 +1,53 @@
 <div class="container">
   <form method="post" action="/addBautismo" >
     <div class="form-group">
-      <label for="inputmadrina">Madrina</label>
-      <input name="madrina" class="form-control" id="inputmadrina" type="text" placeholder="Busqueda de madrina">
+      <label for="inputpadrino">Padrin@s</label>
+      <div class="form-row">
+        <div class="col-11">
+          <input name="padrino" class="form-control" id="inputpadrino" type="text" placeholder="Busqueda de padrino/madrina">
+        </div>
+        <div class="col-auto">
+          <a data-toggle="modal" href="#ModalPadrino" style="color:rgba(0,123,255,1.0)"><i class="fas fa-plus-square fa-2x"></i></a>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="inputpadrino">Padrino</label>
-      <input name="padrino" class="form-control" id="inputpadrino" type="text" placeholder="Busqueda de padrino">
-    </div>
-    <div class="form-group">
+    <div class="form-group row col-12">
       <label for="inputnombre">Nombre</label>
       <input name="nombre" class="form-control" id="inputnombre" type="text" placeholder="Nombre del niño">
     </div>
-    <div class="form-group">
+    <div class="form-group row col-12">
       <label for="inputdni">DNI</label>
       <input name="dni" class="form-control" id="inputdni" type="text" placeholder="DNI del niño">
     </div>
-    <div class="form-group">
+    <div class="form-group row col-12">
       <label for="inputfecha">Fecha</label>
       <input name="fecha" class="form-control" id="inputfecha" type="text" placeholder="Fecha del bautismo">
     </div>
-    <div class="form-group">
+    <div class="form-group row col-12">
       <label for="inputturno">Turno</label>
       <input name="turno" class="form-control" id="inputturno" type="text" placeholder="Turno del bautismo">
     </div>
     <input type="submit" class="btn btn-primary btn-block" value="Agregar">
   </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalPadrino" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Formulario Nuevo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Texto a completar etc.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+  </div>
 </div>
