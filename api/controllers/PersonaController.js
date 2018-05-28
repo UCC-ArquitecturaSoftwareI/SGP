@@ -19,7 +19,10 @@ module.exports = {
 
   },
   lista: async function (req, res){
-    res.view('pages/personas/listasa');
+    var personas = await Usuario.find({});
+
+    res.view('pages/personas/listasa', {persona: personas});
   },
+
 };
 
