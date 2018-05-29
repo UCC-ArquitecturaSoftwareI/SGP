@@ -83,7 +83,7 @@ module.exports.routes = {
     controller: 'PersonaController',
     action: 'agregar'
   },
-  '/formulario': {
+  '/formulario/:id': {
     controller: 'PersonaController',
     action: 'devolverFormulario'
   },

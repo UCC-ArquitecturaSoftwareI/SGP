@@ -24,13 +24,14 @@ module.exports = {
 
   },
   eliminar: async function (req, res) {
-
+    await Persona.destroy({id: req.allParams().id});
     console.log(JSON.stringify(req.allParams()));
     res.redirect('/lista');
   },
   devolverFormulario: async function (req, res) {
-    if (req == null){
-      var ret;
+    var ret;
+    console.log(req);
+    if (req.allParams().id === '0'){
       ret = {
         nombre: null,
         apellido: null,
@@ -38,7 +39,17 @@ module.exports = {
         correo: null,
         direccion: null
       };
-    } else ret = req;
+    } else {
+      var sujeto = await Persona.find({id: req.allParams().id});
+      ret = {
+        id: sujeto[0].id,
+        nombre: sujeto[0].nombre,
+        apellido: sujeto[0].apellido,
+        dni: sujeto[0].dni,
+        correo: sujeto[0].correo,
+        direccion: sujeto[0].direccion
+      };
+    }
     res.view('pages/personas/formulario', {persona: ret});
   },
   buscar: async function (req, res) {
