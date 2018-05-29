@@ -103,8 +103,9 @@ module.exports.routes = {
   '/addBautismo': {
     view: 'pages/bautismos/addBautismo'
   },
-
-
+  '/bautismos': {
+    view: 'pages/bautismos/bautismos'
+  },
 
   /*
         ABM Cursos (ABMCursos)
