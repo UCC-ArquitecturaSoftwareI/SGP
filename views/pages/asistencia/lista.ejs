@@ -1,13 +1,32 @@
-<header class="masterhead">
+<h1>Listado de alumnos</h1>
+<h3>Asistencia</h3>
 
-  <div class="container-fluid">
-    <div class="col-md-2">
-      -Numero alumno-
-    </div>
-    <div class="col-md-8">
-      -Alumno-
-      </div>
-    <div class="col-md-2">
-      checkbox
-    </div>
-  </div>
+<table id="alumno" class="table table-striped table-hover" style="width: 50%; margin:auto;">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Informacion</th>
+    <th>Asistencia</th>
+  </tr>
+  </thead>
+  <tbody id="tabla">
+  <% for(var i = 0; i < a.length ; i++){ %>
+  <tr>
+    <td><%= a[i].id %></td>
+    <td><%= a[i].nombre %></td>
+    <td><%= a[i].apellido %></td>
+    <td>
+      <a href="/Alumno/<%= a[i].id %>" class="btn-info btn">
+        <i class="fas fa-eye"></i>
+      </a>
+    </td>
+    <td>
+      <a href = "/Alumno/<%=a[i].id%>" class="custom-checkbox">
+      </a>
+    </td>
+  </tr>
+  <% } %>
+  </tbody>
+</table>

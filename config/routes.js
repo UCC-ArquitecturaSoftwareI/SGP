@@ -118,8 +118,8 @@ module.exports.routes = {
     */
   '/inscripcion':{
     controller: 'InscripcionController',
-    action: 'inscripcion'
-  }
+    action: 'inscripcion',
+  },
 
 
 
@@ -127,8 +127,10 @@ module.exports.routes = {
 
   /*
         Asistencia (Fortnite)
-
    */
-
+  'GET /asistencia':{
+    controller: 'asistenciaController',
+    action: 'lista',
+  }
 
 };
