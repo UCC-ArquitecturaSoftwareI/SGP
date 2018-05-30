@@ -83,11 +83,15 @@ module.exports.routes = {
     controller: 'PersonaController',
     action: 'agregar'
   },
-  'POST /modificar': {
+  '/formulario/:id': {
+    controller: 'PersonaController',
+    action: 'devolverFormulario'
+  },
+  '/modificar': {
     controller: 'PersonaController',
     action: 'modificar'
   },
-  '/eliminar': {
+  '/eliminar/:id': {
     controller: 'PersonaController',
     action: 'eliminar'
   },
