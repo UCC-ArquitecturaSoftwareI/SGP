@@ -75,27 +75,27 @@ module.exports.routes = {
         ABM Personas (AbstractTeam)
    */
 
-  '/lista':{
+  '/persona/lista':{
     controller: 'PersonaController',
     action: 'lista',
   },
-  'POST /agregar': {
+  'POST /persona/agregar': {
     controller: 'PersonaController',
     action: 'agregar'
   },
-  '/formulario/:id': {
+  '/persona/formulario/:id': {
     controller: 'PersonaController',
     action: 'devolverFormulario'
   },
-  '/modificar': {
+  '/persona/modificar': {
     controller: 'PersonaController',
     action: 'modificar'
   },
-  '/eliminar/:id': {
+  '/persona/eliminar/:id': {
     controller: 'PersonaController',
     action: 'eliminar'
   },
-  '/buscar': {
+  '/persona/buscar': {
     controller: 'PersonaController',
     action: 'buscar'
   },
@@ -104,7 +104,7 @@ module.exports.routes = {
   /*
         ABM Bautismos (PUBG)
    */
-  '/addBautismo': {
+  '/bautismos/add': {
     view: 'pages/bautismos/addBautismo'
   },
   '/bautismos': {
@@ -115,27 +115,27 @@ module.exports.routes = {
         ABM Cursos (ABMCursos)
    */
 
-  '/lista':{
+  '/cursos/lista':{
     controller: 'CursoController',
     action: 'listaCurso',
   },
-  'POST /agregar': {
+  'POST /cursos/agregar': {
     controller: 'CursoController',
     action: 'agregarCurso'
   },
-  '/formulario': {
+  '/cursos/formulario': {
     controller: 'CursoController',
     action: 'frmCurso'
   },
-  '/modificar': {
+  '/cursos/modificar': {
     controller: 'CursoController',
     action: 'modificarCurso'
   },
-  '/eliminar/:id': {
+  '/cursos/eliminar/:id': {
     controller: 'CursoController',
     action: 'eliminarCurso'
   },
-  '/buscar': {
+  '/cursos/buscar': {
     controller: 'CursoController',
     action: 'buscarCurso'
   },
