@@ -110,6 +110,31 @@ module.exports.routes = {
         ABM Cursos (ABMCursos)
    */
 
+  '/lista':{
+    controller: 'CursoController',
+    action: 'listaCurso',
+  },
+  'POST /agregar': {
+    controller: 'CursoController',
+    action: 'agregarCurso'
+  },
+  '/formulario': {
+    controller: 'CursoController',
+    action: 'frmCurso'
+  },
+  '/modificar': {
+    controller: 'CursoController',
+    action: 'modificarCurso'
+  },
+  '/eliminar/:id': {
+    controller: 'CursoController',
+    action: 'eliminarCurso'
+  },
+  '/buscar': {
+    controller: 'CursoController',
+    action: 'buscarCurso'
+  },
+
 
 
 
