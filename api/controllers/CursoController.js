@@ -23,12 +23,12 @@ module.exports = {
     datos = await curso.create(nuevoCurso);
     res.view('pages/Cursos/curso', {curso: cursos});
   },
-  eliminarCurso: async function (req, res) {
+  eliminar: async function (req, res) {
 
     console.log(JSON.stringify(req.allParams()));
     res.redirect('/curso');
   },
-  CursoFrm: async function (req, res) {
+  formulario: async function (req, res) {
     if (req = null) {
       var ret;
       ret = {
@@ -45,7 +45,7 @@ module.exports = {
     res.view('pages/Cursos/cursofrm', {curso: ret});
   },
   lista: async function (req, res) {
-    var cursos = await curso.find({});
+    var cursos = await Curso.find({});
     res.view('pages/Cursos/curso', {curso: cursos});
   },
 

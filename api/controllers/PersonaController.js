@@ -37,7 +37,7 @@ module.exports = {
   eliminar: async function (req, res) {
     await Persona.destroy({id: req.allParams().id});
     console.log(JSON.stringify(req.allParams()));
-    res.redirect('/lista');
+    res.redirect('/persona/lista');
   },
   devolverFormulario: async function (req, res) {
     var ret;

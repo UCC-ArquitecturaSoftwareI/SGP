@@ -3,7 +3,7 @@ async function buscarPersona() {
 
   if (txtbox.value.length >= 3) {
 
-    let res = await fetch('/buscar', {
+    let res = await fetch('/persona/buscar', {
       method: 'POST',
       body: JSON.stringify({dato: txtbox.value}), // data can be `string` or {object}!
       headers: {
