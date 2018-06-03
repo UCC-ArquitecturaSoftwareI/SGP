@@ -87,7 +87,7 @@ module.exports.routes = {
     controller: 'PersonaController',
     action: 'devolverFormulario'
   },
-  '/persona/modificar': {
+  'POST /persona/modificar': {
     controller: 'PersonaController',
     action: 'modificar'
   },
@@ -151,7 +151,12 @@ module.exports.routes = {
     action: 'inscripcion',
   },
 
+  'POST /inscripcion/buscar': {
+    controller: 'InscripcionController',
+    action: 'buscarCurso'
+  },
 
+  //'/inscripcion/buscar': 'InscripcionController.buscarCurso',
 
 
 
