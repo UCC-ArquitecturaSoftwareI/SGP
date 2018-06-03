@@ -21,7 +21,18 @@ module.exports = {
     res.view('pages/personas/listasa', {persona: personas});
   },
   modificar: async function (req, res) {
+    var param = req.allParams();
+    var nuevapersona = {
+      nombre: param.nombre,
+      apellido: param.apellido,
+      dni: param.dni,
+      correo: param.correo,
+      direccion: param.direccion,
+    };
 
+    datos = await Persona.update({id: param.id},nuevapersona);
+    var personas = await Persona.find({});
+    res.view('pages/personas/listasa', {persona: personas});
   },
   eliminar: async function (req, res) {
     await Persona.destroy({id: req.allParams().id});
@@ -30,9 +41,9 @@ module.exports = {
   },
   devolverFormulario: async function (req, res) {
     var ret;
-    console.log(req);
     if (req.allParams().id === '0'){
       ret = {
+        id: null,
         nombre: null,
         apellido: null,
         dni: null,
@@ -53,7 +64,16 @@ module.exports = {
     res.view('pages/personas/formulario', {persona: ret});
   },
   buscar: async function (req, res) {
-
+    var personas = await Persona.find(
+      {
+        or: [
+          {nombre: {contains: req.allParams().dato}},
+          {apellido: {contains: req.allParams().dato}},
+          {dni: {contains: req.allParams().dato}},
+        ]
+      });
+    console.log(req.allParams());
+    res.json(personas);
   },
   lista: async function (req, res) {
     var personas = await Persona.find({});

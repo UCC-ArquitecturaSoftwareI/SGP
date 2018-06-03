@@ -1,34 +1,33 @@
-<%console.log(persona.nombre)%>
-<%if (persona.dni == null){%>
+<%if (persona.id === null){%>
 <form action="/agregar" method="post">
-<%}else{%>
+<%} else {%>
 <form action="/modificar" method="post">
 <%}%>
   <div class="form-group">
     <label for="nombre">Nombre</label>
-    <input type="text" class="form-control" name="nombre" value=<%=persona.nombre%>>
+    <input type="text" class="form-control" name="nombre" value="<%=persona.nombre%>">
   </div>
   <div class="form-group">
     <label for="apellido">Apellido</label>
-    <input type="text" class="form-control" name="apellido" value=<%=persona.apellido%>>
+    <input type="text" class="form-control" name="apellido" value="<%=persona.apellido%>">
   </div>
   <div class="form-group">
     <label for="dni">DNI</label>
-    <input type="text" class="form-control" name="dni" value=<%=persona.dni%>>
+    <input type="text" class="form-control" name="dni" value="<%=persona.dni%>">
   </div>
   <div class="form-group">
     <label for="correo">Correo</label>
-    <input type="email" class="form-control" name="correo" value=<%=persona.correo%>>
+    <input type="email" class="form-control" name="correo" value="<%=persona.correo%>">
   </div>
   <div class="form-group">
     <label for="direccion">Dirección</label>
-    <input type="text" class="form-control" name="direccion" value=<%=persona.direccion%>>
+    <input type="text" class="form-control" name="direccion" value="<%=persona.direccion%>">
   </div>
-
-
-<%if (persona.dni == null){%>
+  <input type="hidden" class="form-control" name="id" value="<%=persona.id%>">
+<% if (persona.id === null){%>
   <input type="submit" class="btn btn-primary" value="Agregar">
-<%}else{%>
-  <input type="submit" class="btn btn-primary" value="Modificar">
-<%}%>
 </form>
+  <%} else {%>
+  <input type="submit" class="btn btn-primary" value="Modificar">
+</form>
+<%}%>
