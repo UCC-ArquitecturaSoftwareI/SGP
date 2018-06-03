@@ -159,7 +159,7 @@ module.exports.routes = {
         Asistencia (Fortnite)
    */
   'GET /asistencia':{
-    controller: 'asistenciaController',
+    controller: 'AsistenciaController',
     action: 'lista',
   }
 
