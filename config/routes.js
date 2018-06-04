@@ -165,8 +165,11 @@ module.exports.routes = {
    */
   '/asistencia/curso':{
     controller: 'AsistenciaController',
+    action: 'curso',
+  },
+  '/asistencia/lista/:id':{
+    controller: 'AsistenciaController',
     action: 'lista',
   },
-
 
 };
