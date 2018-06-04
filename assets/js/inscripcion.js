@@ -25,7 +25,7 @@ async function buscarCurso() {
       t.innerHTML += '<tr>' +
         '<td>'+dato.nombreDelCurso+'</td>' +
         '<td>'+dato.descripcionCurso+'</td>' +
-        '<td>      <a href="/Curso/<%= a[i].id %>" class="btn-info btn">\n' +
+        '<td>      <a href="/inscripcion/cursoDetalle/' + dato.id + '" class="btn-info btn">\n' +
         '        <i class="fas fa-pencil-alt"></i>\n' +
         '      </a></td>' +
         '</tr>';

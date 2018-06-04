@@ -1,0 +1,26 @@
+
+
+
+
+<h1>Curso: <%= curso.nombreDelCurso %></h1>
+
+<div class="input-group mb-3">
+  <input type="text" data-provide="typeahead" placeholder="Persona" name="buscador" onkeyup="buscarPersona()">
+  <!--<div class="input-group-append">-->
+  <!--<button class="btn btn-primary btn-block" type="button">Buscar</button>-->
+  <!--</div>-->
+</div>
+
+
+
+
+<table id="personas" class="table table-striped table-hover" style="width: 50%; margin:auto;">
+  <thead>
+  <tr>
+    <th>Curso</th>
+    <th>Descripcion</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody id="tabla"/>
+</table>

@@ -6,7 +6,7 @@ module.exports = {
     // REVISAR QUE TE MANDA
 
 
-    res.view('pages/inscripcion/inscripcion.ejs');
+    res.view('pages/inscripcion/seleccionCurso.ejs');
   },
 
 
@@ -24,6 +24,22 @@ module.exports = {
     res.json(cursos);
 
   },
+
+  cursoDetalle: async function (req, res) {
+    console.log(req.allParams());
+    var cursoId = req.param('cursoId', -1);
+
+    var curso = await Curso.find(
+
+      {id: cursoId}
+
+    );
+
+    res.view('pages/inscripcion/inscripcionPersona.ejs',
+      { curso: curso[0]});
+
+
+  }
 
 
 
