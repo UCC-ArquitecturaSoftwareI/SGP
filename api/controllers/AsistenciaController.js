@@ -20,6 +20,8 @@ module.exports = {
 
   },
   lista: async function (req, res){
-    res.view('pages/asistencia/indexAsistencia');
+    var user = await Usuario.find({id:req.session.usuario.id}).populate('docencia');
+    console.log(user);
+    res.view('pages/asistencia/curso', {docencia: user.docencia});
   },
 };
