@@ -20,7 +20,7 @@ module.exports = {
     },
 
     diasDeCursos: {
-      type: 'string',
+      type: 'json',
       required: true
     },
 

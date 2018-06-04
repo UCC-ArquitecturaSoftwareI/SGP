@@ -18,7 +18,7 @@ module.exports = {
 
     datos = await Persona.create(nuevapersona);
 
-    res.redirect('/lista');
+    res.redirect('/persona/lista');
   },
   modificar: async function (req, res) {
     var param = req.allParams();
@@ -32,12 +32,12 @@ module.exports = {
 
     datos = await Persona.update({id: param.id},nuevapersona);
 
-    res.redirect('/lista');
+    res.redirect('/persona/lista');
   },
   eliminar: async function (req, res) {
     await Persona.destroy({id: req.allParams().id});
     console.log(JSON.stringify(req.allParams()));
-    res.redirect('/lista');
+    res.redirect('/persona/lista');
   },
   devolverFormulario: async function (req, res) {
     var ret;

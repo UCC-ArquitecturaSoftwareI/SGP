@@ -1,9 +1,9 @@
 async function buscarPersona() {
-  let txtbox = document.querySelector("input[name='buscador']");
+  let txtbox = document.querySelector('input[name=\'buscador\']');
 
   if (txtbox.value.length >= 3) {
 
-    let res = await fetch("/buscar", {
+    let res = await fetch('/persona/buscar', {
       method: 'POST',
       body: JSON.stringify({dato: txtbox.value}), // data can be `string` or {object}!
       headers: {
@@ -19,15 +19,15 @@ async function buscarPersona() {
     t.innerHTML = '';
     for( let dato of json){
 
-      t.innerHTML += "<tr>" +
-        "<td>"+dato.nombre+"</td>" +
-        "<td>"+dato.apellido+"</td>" +
-        "<td>"+dato.dni+"</td>" +
-        "<td>"+dato.correo+"</td>" +
-        "<td>"+dato.direccion+"</td>" +
+      t.innerHTML += '<tr>' +
+        '<td>'+dato.nombre+'</td>' +
+        '<td>'+dato.apellido+'</td>' +
+        '<td>'+dato.dni+'</td>' +
+        '<td>'+dato.correo+'</td>' +
+        '<td>'+dato.direccion+'</td>' +
         '<td><button class="btn-info btn" data-toggle="modal" data-target="#deleteModal">' +
         '<i class="fas fa-trash"></i>' +
-        "</button>" +
+        '</button>' +
         '<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
         '<div class="modal-dialog" role="document">' +
         '<div class="modal-content">' +

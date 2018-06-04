@@ -75,27 +75,27 @@ module.exports.routes = {
         ABM Personas (AbstractTeam)
    */
 
-  '/lista':{
+  '/persona/lista':{
     controller: 'PersonaController',
     action: 'lista',
   },
-  'POST /agregar': {
+  'POST /persona/agregar': {
     controller: 'PersonaController',
     action: 'agregar'
   },
-  '/formulario/:id': {
+  '/persona/formulario/:id': {
     controller: 'PersonaController',
     action: 'devolverFormulario'
   },
-  '/modificar': {
+  'POST /persona/modificar': {
     controller: 'PersonaController',
     action: 'modificar'
   },
-  '/eliminar/:id': {
+  '/persona/eliminar/:id': {
     controller: 'PersonaController',
     action: 'eliminar'
   },
-  '/buscar': {
+  '/persona/buscar': {
     controller: 'PersonaController',
     action: 'buscar'
   },
@@ -104,15 +104,41 @@ module.exports.routes = {
   /*
         ABM Bautismos (PUBG)
    */
-  '/addBautismo': {
+  '/bautismos/add': {
     view: 'pages/bautismos/addBautismo'
   },
-
-
+  '/bautismos': {
+    view: 'pages/bautismos/bautismos'
+  },
 
   /*
         ABM Cursos (ABMCursos)
    */
+
+  '/cursos/lista':{
+    controller: 'CursoController',
+    action: 'lista',
+  },
+  'POST /cursos/agregar': {
+    controller: 'CursoController',
+    action: 'agregar'
+  },
+  '/cursos/formulario': {
+    controller: 'CursoController',
+    action: 'formulario'
+  },
+  '/cursos/modificar': {
+    controller: 'CursoController',
+    action: 'modificar'
+  },
+  '/cursos/eliminar/:id': {
+    controller: 'CursoController',
+    action: 'eliminar'
+  },
+  '/cursos/buscar': {
+    controller: 'CursoController',
+    action: 'buscar'
+  },
 
 
 
@@ -122,17 +148,24 @@ module.exports.routes = {
     */
   '/inscripcion':{
     controller: 'InscripcionController',
-    action: 'inscripcion'
-  }
+    action: 'inscripcion',
+  },
 
+  'POST /inscripcion/buscar': {
+    controller: 'InscripcionController',
+    action: 'buscarCurso'
+  },
 
+  //'/inscripcion/buscar': 'InscripcionController.buscarCurso',
 
 
 
   /*
         Asistencia (Fortnite)
-
    */
-
+  'GET /asistencia':{
+    controller: 'AsistenciaController',
+    action: 'lista',
+  }
 
 };
