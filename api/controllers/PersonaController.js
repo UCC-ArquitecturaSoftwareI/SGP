@@ -17,8 +17,8 @@ module.exports = {
     };
 
     datos = await Persona.create(nuevapersona);
-    var personas = await Persona.find({});
-    res.view('pages/personas/listasa', {persona: personas});
+
+    res.redirect('/lista');
   },
   modificar: async function (req, res) {
     var param = req.allParams();
@@ -31,8 +31,8 @@ module.exports = {
     };
 
     datos = await Persona.update({id: param.id},nuevapersona);
-    var personas = await Persona.find({});
-    res.view('pages/personas/listasa', {persona: personas});
+
+    res.redirect('/lista');
   },
   eliminar: async function (req, res) {
     await Persona.destroy({id: req.allParams().id});
@@ -48,7 +48,8 @@ module.exports = {
         apellido: null,
         dni: null,
         correo: null,
-        direccion: null
+        direccion: null,
+        act: 'agregar',
       };
     } else {
       var sujeto = await Persona.find({id: req.allParams().id});
@@ -58,7 +59,8 @@ module.exports = {
         apellido: sujeto[0].apellido,
         dni: sujeto[0].dni,
         correo: sujeto[0].correo,
-        direccion: sujeto[0].direccion
+        direccion: sujeto[0].direccion,
+        act: 'modificar',
       };
     }
     res.view('pages/personas/formulario', {persona: ret});

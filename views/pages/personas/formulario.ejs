@@ -1,8 +1,4 @@
-<%if (persona.id === null){%>
-<form action="/agregar" method="post">
-<%} else {%>
-<form action="/modificar" method="post">
-<%}%>
+<form action="/<%=persona.act%>" method="post">
   <div class="form-group">
     <label for="nombre">Nombre</label>
     <input type="text" class="form-control" name="nombre" value="<%=persona.nombre%>">
@@ -24,10 +20,6 @@
     <input type="text" class="form-control" name="direccion" value="<%=persona.direccion%>">
   </div>
   <input type="hidden" class="form-control" name="id" value="<%=persona.id%>">
-<% if (persona.id === null){%>
-  <input type="submit" class="btn btn-primary" value="Agregar">
+
+  <input type="submit" class="btn btn-primary" value="<%=persona.act%>">
 </form>
-  <%} else {%>
-  <input type="submit" class="btn btn-primary" value="Modificar">
-</form>
-<%}%>
