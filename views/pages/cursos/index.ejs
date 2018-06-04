@@ -1,36 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  <title>cursos</title>
-</head>
-<body>
-<h2>cursos</h2>
+<h2 style="color: #408080">registro de cursos</h2>
 <form>
   <div class="form-row col-md">
     <div class="form group-row col-md-2">
-      <label for="nombreDelCurso">nombre de curso</label>
-      <select class="form-control" id="nombreDelCurso">
-        <option selected>...</option>
-      </select>
-    </div>
+      <label for="nombreDelCurso" style="color: #408080">nombre de curso</label>
+      <input class="form-control" type="text" id="nombreDelCurso" placeholder="..." autocomplete="off" >
+       </div>
     <div class="input-group col-md-5">
       <div class="input-group-prepped">
-        <span class="input-group-text"id="">fecha de inicio y de finalizado</span>
+        <span class="input-group-text"id="" style="color: #408080">fecha de inicio y de finalizado</span>
       </div>
       <input type="text" class="form-control" placeholder="--/--/--">
       <input type="text" class="form-control" placeholder="--/--/--">
     </div>
     <div class="form group-row col-md-2">
-      <button type="submit" class="btn btn-success">crear curso</button>
+      <button type="reset" id="btnD" class="btn" style="background-color: #00A000">borrar</button>
     </div>
   </div>
   <div class="from group col-md-4">
-    <label for="diacurso"> dia de cursado</label>
-    <select class="form-control" id="diacurso" >
+    <label for="diacurso" style="color: #408080">dia de cursado</label>
+    <select class="form-control" id="diacurso">
       <option selected>....</option>
       <option>lunes</option>
       <option>martes</option>
@@ -39,30 +27,35 @@
       <option>viernes</option>
     </select>
   </div>
+  <h2 style="color: #408080">registro de horarios</h2>
   <div class="form-row col-md-6">
     <div class="form group col-md-4">
-      <label for="horaincio">horario de inicio de cursado</label>
-      <input type="text" class="form-control" id="horaincio">
+      <label for="horaincio" style="color: #408080">horario de inicio de cursado</label>
+      <input type="text" class="form-control" id="horaincio" placeholder="--:--:--">
     </div>
     <div class="form group col-md-4">
-      <label for="horafinal">horario de finalizado</label>
-      <input type="text" class="form-control" id="horafinal">
+      <label for="horafinal" style="color: #408080">horario de finalizado</label>
+      <input type="text" class="form-control" id="horafinal" placeholder="--:--:--">
     </div>
   </div>
+  <h2 style="color: #408080">registro de aula y temas a tratar</h2>
   <div class="form group col-md-4">
-    <label for="aula">aula</label>
+    <label for="aula" style="color: #408080">aula</label>
     <select class="form-control" id="aula">
       <option selected>...</option>
+      <option></option>
     </select>
   </div>
   <div class="form group col-md-4">
-    <label for="descripcion">temas a tratar durante el cursado</label>
-    <textarea class="form-control" id="descripcion" rows="4"></textarea>
+    <label for="descripcion" style="color: #408080">temas a tratar durante el cursado</label>
+    <textarea class="form-control" id="descripcion" rows="4" placeholder=". . . . ."></textarea>
   </div>
   <div class="form group col-md-4">
-    <label for="cupos">cupos disponibles</label>
+    <label for="cupos" style="color: #408080">cupos disponibles</label>
     <input type="text"class="form-control" id="cupos">
-    <button type="submit" class="btn btn-success">listo</button>
+  </div>
+  <div class="form group">
+    <button type="submit" class="btn col-md-1" style="background-color: #00A000;margin-top: 15px">listo</button>
   </div>
 </form>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -71,5 +64,3 @@
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-</body>
-</html>

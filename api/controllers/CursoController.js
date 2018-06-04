@@ -9,15 +9,15 @@ module.exports = {
   agregar: async function (req, res) {
     var param = req.allParams();
     var nuevoCurso = {
-      fechaInicioCurso: param.fechaInicioCurso,
-      fechaFinCurso: param.fechaFinCurso,
-      diasDeCursos: param.diasDeCursos,
-      horaInicioCurso: param.horaInicioCurso,
-      horaFinCurso: param.horaFinCurso,
-      nombreDelCurso: param.nombreDelCurso,
-      descripcionCurso: param.descripcionCurso,
+      fechaInicio: param.fechaInicio,
+      fechaFin: param.fechaFin,
+      dias: param.dias,
+      horaInicio: param.horaInicio,
+      horaFin: param.horaFin,
+      nombre: param.nombreDel,
+      descripcion: param.descripcion,
       aula: param.aula,
-      CupoCursos: param.CupoCursos,
+      Cupo: param.Cupo,
     };
 
     datos = await curso.create(nuevoCurso);
@@ -32,14 +32,14 @@ module.exports = {
     if (req = null) {
       var ret;
       ret = {
-        nombreDelCurso: null,
-        fechaFinCurso: null,
-        diasDeCursos: null,
-        horaInicioCurso: null,
-        horaFinCurso: null,
-        descripcionCurso: null,
+        nombre: null,
+        fechaFin: null,
+        diasDe: null,
+        horaInicio: null,
+        horaFin: null,
+        descripcion: null,
         aula: null,
-        CupoCursos: null
+        Cupo: null
       };
     }
     res.view('pages/cursos/formulario', {curso: ret});

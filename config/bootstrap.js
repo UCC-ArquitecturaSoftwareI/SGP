@@ -62,51 +62,51 @@ module.exports.bootstrap = async function (done) {
     // AlphaTeam: Creamos cursos truchos para probar
     const cursos = await Curso.createEach([
       {
-        fechaInicioCurso: 1530414000000, // Julio 1, 2018 en milisegundos
-        fechaFinCurso: 1533092400000,    // Agosto 1, 2018
-        diasDeCursos: [1, 3, 5], // Domingo es 0, lunes es 1, y así...
-        horaInicioCurso: 17,  // 0 a 23
-        horaFinCurso: 19,
-        nombreDelCurso: 'Electricidad',
-        descripcionCurso: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque vel nunc ac egestas. Cras porta fringilla sem. Nullam tempus odio purus, non tincidunt nisl pellentesque varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque eu nisi tellus. Nullam viverra nisi sem, sit amet mollis velit rhoncus a. Fusce id vulputate quam, et vehicula tellus. Sed lorem est, placerat at aliquam vel, dapibus et dui. Suspendisse mi diam, pulvinar at eros sit amet, varius varius quam. ',
+        fechaInicio: 1530414000000, // Julio 1, 2018 en milisegundos
+        fechaFin: 1533092400000,    // Agosto 1, 2018
+        dias: [1, 3, 5], // Domingo es 0, lunes es 1, y así...
+        horaInicio: 17,  // 0 a 23
+        horaFin: 19,
+        nombre: 'Electricidad',
+        descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque vel nunc ac egestas. Cras porta fringilla sem. Nullam tempus odio purus, non tincidunt nisl pellentesque varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque eu nisi tellus. Nullam viverra nisi sem, sit amet mollis velit rhoncus a. Fusce id vulputate quam, et vehicula tellus. Sed lorem est, placerat at aliquam vel, dapibus et dui. Suspendisse mi diam, pulvinar at eros sit amet, varius varius quam. ',
         aula: 'aula1',
-        cupoCurso: 20,
+        cupo: 20,
         docentes: [docente1.id]
       },
       {
-        fechaInicioCurso: 1530414000000, // Julio 1, 2018 en milisegundos
-        fechaFinCurso: 1533092400000,    // Agosto 1, 2018
-        diasDeCursos: [1, 3, 5], // Domingo es 0, lunes es 1, y así...
-        horaInicioCurso: 19,  // 0 a 23
-        horaFinCurso: 21,
-        nombreDelCurso: 'Mecanica',
-        descripcionCurso: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque vel nunc ac egestas. Cras porta fringilla sem. Nullam tempus odio purus, non tincidunt nisl pellentesque varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque eu nisi tellus. Nullam viverra nisi sem, sit amet mollis velit rhoncus a. Fusce id vulputate quam, et vehicula tellus. Sed lorem est, placerat at aliquam vel, dapibus et dui. Suspendisse mi diam, pulvinar at eros sit amet, varius varius quam. ',
+        fechaInicio: 1530414000000, // Julio 1, 2018 en milisegundos
+        fechaFin: 1533092400000,    // Agosto 1, 2018
+        dias: [1, 3, 5], // Domingo es 0, lunes es 1, y así...
+        horaInicio: 19,  // 0 a 23
+        horaFin: 21,
+        nombre: 'Mecanica',
+        descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque vel nunc ac egestas. Cras porta fringilla sem. Nullam tempus odio purus, non tincidunt nisl pellentesque varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque eu nisi tellus. Nullam viverra nisi sem, sit amet mollis velit rhoncus a. Fusce id vulputate quam, et vehicula tellus. Sed lorem est, placerat at aliquam vel, dapibus et dui. Suspendisse mi diam, pulvinar at eros sit amet, varius varius quam. ',
         aula: 'aula1',
-        cupoCurso: 20,
+        cupo: 20,
         docentes: [docente2.id]
       },
       {
-        fechaInicioCurso: 1533092400000, // Agosto 1, 2018
-        fechaFinCurso: 1535760000000, // Septiembre 1, 2018
+        fechaInicio: 1533092400000, // Agosto 1, 2018
+        fechaFin: 1535760000000, // Septiembre 1, 2018
         diasDeCursos: [1, 3, 5], // Domingo es 0, lunes es 1, y así...
-        horaInicioCurso: 17,  // 0 a 23
-        horaFinCurso: 19,
-        nombreDelCurso: 'Electricidad',
-        descripcionCurso: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque vel nunc ac egestas. Cras porta fringilla sem. Nullam tempus odio purus, non tincidunt nisl pellentesque varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque eu nisi tellus. Nullam viverra nisi sem, sit amet mollis velit rhoncus a. Fusce id vulputate quam, et vehicula tellus. Sed lorem est, placerat at aliquam vel, dapibus et dui. Suspendisse mi diam, pulvinar at eros sit amet, varius varius quam. ',
+        horaInicio: 17,  // 0 a 23
+        horaFin: 19,
+        nombre: 'Electricidad',
+        descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque vel nunc ac egestas. Cras porta fringilla sem. Nullam tempus odio purus, non tincidunt nisl pellentesque varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque eu nisi tellus. Nullam viverra nisi sem, sit amet mollis velit rhoncus a. Fusce id vulputate quam, et vehicula tellus. Sed lorem est, placerat at aliquam vel, dapibus et dui. Suspendisse mi diam, pulvinar at eros sit amet, varius varius quam. ',
         aula: 'aula1',
-        cupoCurso: 20,
+        cupo: 20,
         docentes: [docente1.id]
       },
       {
-        fechaInicioCurso: 1533092400000, // Agosto 1, 2018
-        fechaFinCurso: 1535760000000, // Septiembre 1, 2018
-        diasDeCursos: [2, 4], // Domingo es 0, lunes es 1, y así...
-        horaInicioCurso: 17,  // 0 a 23
-        horaFinCurso: 19,
-        nombreDelCurso: 'Folcklore',
-        descripcionCurso: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque vel nunc ac egestas. Cras porta fringilla sem. Nullam tempus odio purus, non tincidunt nisl pellentesque varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque eu nisi tellus. Nullam viverra nisi sem, sit amet mollis velit rhoncus a. Fusce id vulputate quam, et vehicula tellus. Sed lorem est, placerat at aliquam vel, dapibus et dui. Suspendisse mi diam, pulvinar at eros sit amet, varius varius quam. ',
+        fechaInicio: 1533092400000, // Agosto 1, 2018
+        fechaFin: 1535760000000, // Septiembre 1, 2018
+        dias: [2, 4], // Domingo es 0, lunes es 1, y así...
+        horaInicio: 17,  // 0 a 23
+        horaFin: 19,
+        nombre: 'Folcklore',
+        descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque vel nunc ac egestas. Cras porta fringilla sem. Nullam tempus odio purus, non tincidunt nisl pellentesque varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque eu nisi tellus. Nullam viverra nisi sem, sit amet mollis velit rhoncus a. Fusce id vulputate quam, et vehicula tellus. Sed lorem est, placerat at aliquam vel, dapibus et dui. Suspendisse mi diam, pulvinar at eros sit amet, varius varius quam. ',
         aula: 'aula2',
-        cupoCurso: 20,
+        cupo: 20,
         docentes: [docente3.id]
       },
     ]).fetch();
