@@ -1,18 +1,30 @@
+let retardo;
 async function buscarPersona() {
-  let txtbox = document.querySelector('input[name=\'buscador\']');
+  clearTimeout(retardo);
+  retardo = await setTimeout(async () => {
+    let txtbox = document.querySelector('input[name=\'buscador\']');
+    let res;
 
-  if (txtbox.value.length >= 3) {
+    if (txtbox.value.length >= 3) {
 
-    let res = await fetch('/persona/buscar', {
-      method: 'POST',
-      body: JSON.stringify({dato: txtbox.value}), // data can be `string` or {object}!
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+      res = await fetch('/persona/buscar', {
+        method: 'POST',
+        body: JSON.stringify({dato: txtbox.value}), // data can be `string` or {object}!
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    } else {
+      res = await fetch('/persona/buscar', {
+        method: 'POST',
+        body: JSON.stringify({dato:''}), // data can be `string` or {object}!
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+    }
     let json = await res.json();
-
-    console.log(json);
 
     let t = document.getElementById('tabla');
 
@@ -25,6 +37,11 @@ async function buscarPersona() {
         '<td>'+dato.dni+'</td>' +
         '<td>'+dato.correo+'</td>' +
         '<td>'+dato.direccion+'</td>' +
+        '<td>' +
+        '<a href="/formulario/<%= persona[i].id%>" class="btn-info btn">' +
+        '<i class="fas fa-pencil-alt"></i>' +
+        '</a>' +
+        '</td>' +
         '<td><button class="btn-info btn" data-toggle="modal" data-target="#deleteModal">' +
         '<i class="fas fa-trash"></i>' +
         '</button>' +
@@ -46,12 +63,7 @@ async function buscarPersona() {
         '</div>' +
         '</div>' +
         '</td>' +
-        '<td>' +
-        '<a href="/formulario/<%= persona[i].id%>" class="btn-info btn">' +
-        '<i class="fas fa-eye"></i>' +
-        '</a>' +
-        '</td>' +
         '</tr>';
     }
-  }
+  },500);
 }

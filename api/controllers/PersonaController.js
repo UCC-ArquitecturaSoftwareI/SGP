@@ -36,7 +36,6 @@ module.exports = {
   },
   eliminar: async function (req, res) {
     await Persona.destroy({id: req.allParams().id});
-    console.log(JSON.stringify(req.allParams()));
     res.redirect('/persona/lista');
   },
   devolverFormulario: async function (req, res) {
@@ -74,7 +73,6 @@ module.exports = {
           {dni: {contains: req.allParams().dato}},
         ]
       });
-    console.log(req.allParams());
     res.json(personas);
   },
   lista: async function (req, res) {

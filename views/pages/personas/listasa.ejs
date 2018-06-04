@@ -37,6 +37,11 @@
     <td><%= persona[i].correo %></td>
     <td><%= persona[i].direccion %></td>
     <td>
+      <a href="/persona/formulario/<%= persona[i].id%>" class="btn-info btn">
+        <i class="fas fa-pencil-alt"></i>
+      </a>
+    </td>
+    <td>
       <button class="btn-info btn" data-toggle="modal" data-target="#deleteModal<%= persona[i].id %>">
         <i class="fas fa-trash"></i>
       </button>
@@ -57,11 +62,6 @@
           </div>
         </div>
       </div>
-    </td>
-    <td>
-      <a href="/persona/formulario/<%= persona[i].id%>" class="btn-info btn">
-        <i class="fas fa-eye"></i>
-      </a>
     </td>
   </tr>
   <% } %>
