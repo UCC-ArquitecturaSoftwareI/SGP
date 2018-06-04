@@ -161,6 +161,11 @@ module.exports.routes = {
   'GET /asistencia':{
     controller: 'AsistenciaController',
     action: 'lista',
-  }
+  },
+  'GET /asistencia2':{
+    controller: 'AsistenciaControler',
+    action: 'lista2',
+  },
+
 
 };

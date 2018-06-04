@@ -15,7 +15,8 @@ module.exports = {
   eliminar: async function (req, res){
 
   },
-  buscar: async function (req, res){
+  lista2: async function (req, res){
+    res.view('pages/asistencia/lista');
 
   },
   lista: async function (req, res){
