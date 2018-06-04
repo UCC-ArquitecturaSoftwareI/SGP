@@ -75,43 +75,69 @@ module.exports.routes = {
         ABM Personas (AbstractTeam)
    */
 
-
+  '/persona/lista':{
+    controller: 'PersonaController',
+    action: 'lista',
+  },
+  'POST /persona/agregar': {
+    controller: 'PersonaController',
+    action: 'agregar'
+  },
+  '/persona/formulario/:id': {
+    controller: 'PersonaController',
+    action: 'devolverFormulario'
+  },
+  'POST /persona/modificar': {
+    controller: 'PersonaController',
+    action: 'modificar'
+  },
+  '/persona/eliminar/:id': {
+    controller: 'PersonaController',
+    action: 'eliminar'
+  },
+  '/persona/buscar': {
+    controller: 'PersonaController',
+    action: 'buscar'
+  },
 
 
   /*
-        ABM Alumnos (PUBG)
+        ABM Bautismos (PUBG)
    */
-
-
-
+  '/bautismos/add': {
+    view: 'pages/bautismos/addBautismo'
+  },
+  '/bautismos': {
+    view: 'pages/bautismos/bautismos'
+  },
 
   /*
         ABM Cursos (ABMCursos)
    */
 
-  '/lista':{
+  '/cursos/lista':{
     controller: 'CursoController',
-    action: 'listaCurso',
+    action: 'lista',
   },
-  'POST /agregar': {
+  'POST /cursos/agregar': {
     controller: 'CursoController',
-    action: 'agregarCurso'
+    action: 'agregar'
   },
-  '/formulario': {
+  '/cursos/formulario': {
     controller: 'CursoController',
-    action: 'frmCurso'
+    action: 'formulario'
   },
-  '/modificar': {
+  '/cursos/modificar': {
     controller: 'CursoController',
-    action: 'modificarCurso'
+    action: 'modificar'
   },
-  '/eliminar/:id': {
+  '/cursos/eliminar/:id': {
     controller: 'CursoController',
-    action: 'eliminarCurso'
+    action: 'eliminar'
   },
-  '/buscar': {
+  '/cursos/buscar': {
     controller: 'CursoController',
-    action: 'buscarCurso'
+    action: 'buscar'
   },
 
 
@@ -119,14 +145,27 @@ module.exports.routes = {
 
   /*
         Gestión de Cursos (Alpha)
-   */
+    */
+  '/inscripcion':{
+    controller: 'InscripcionController',
+    action: 'inscripcion',
+  },
 
+  'POST /inscripcion/buscar': {
+    controller: 'InscripcionController',
+    action: 'buscarCurso'
+  },
+
+  //'/inscripcion/buscar': 'InscripcionController.buscarCurso',
 
 
 
   /*
         Asistencia (Fortnite)
    */
-
+  'GET /asistencia':{
+    controller: 'AsistenciaController',
+    action: 'lista',
+  }
 
 };
