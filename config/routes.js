@@ -87,7 +87,7 @@ module.exports.routes = {
     controller: 'PersonaController',
     action: 'devolverFormulario'
   },
-  '/persona/modificar': {
+  'POST /persona/modificar': {
     controller: 'PersonaController',
     action: 'modificar'
   },
@@ -117,27 +117,27 @@ module.exports.routes = {
 
   '/cursos/lista':{
     controller: 'CursoController',
-    action: 'listaCurso',
+    action: 'lista',
   },
   'POST /cursos/agregar': {
     controller: 'CursoController',
-    action: 'agregarCurso'
+    action: 'agregar'
   },
   '/cursos/formulario': {
     controller: 'CursoController',
-    action: 'frmCurso'
+    action: 'formulario'
   },
   '/cursos/modificar': {
     controller: 'CursoController',
-    action: 'modificarCurso'
+    action: 'modificar'
   },
   '/cursos/eliminar/:id': {
     controller: 'CursoController',
-    action: 'eliminarCurso'
+    action: 'eliminar'
   },
   '/cursos/buscar': {
     controller: 'CursoController',
-    action: 'buscarCurso'
+    action: 'buscar'
   },
 
 
@@ -151,7 +151,12 @@ module.exports.routes = {
     action: 'inscripcion',
   },
 
+  'POST /inscripcion/buscar': {
+    controller: 'InscripcionController',
+    action: 'buscarCurso'
+  },
 
+  //'/inscripcion/buscar': 'InscripcionController.buscarCurso',
 
 
 
