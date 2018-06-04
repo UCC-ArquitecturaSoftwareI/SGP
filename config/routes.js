@@ -108,7 +108,8 @@ module.exports.routes = {
     view: 'pages/bautismos/addBautismo'
   },
   '/bautismos': {
-    view: 'pages/bautismos/bautismos'
+    controller: 'TurnoBautismoController',
+    action: 'list'
   },
 
   /*
