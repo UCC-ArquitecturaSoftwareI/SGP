@@ -7,7 +7,7 @@ async function buscarCurso() {
 
 
 
-    let res = await fetch('/inscripcionBuscar', {
+    let res = await fetch('/inscripcion/buscar', {
       method: 'POST',
       body: JSON.stringify({nombre: txtbox.value}), // data can be `string` or {object}!
       headers: {
