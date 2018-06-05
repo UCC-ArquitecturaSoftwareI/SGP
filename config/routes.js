@@ -111,6 +111,8 @@ module.exports.routes = {
     controller: 'TurnoBautismoController',
     action: 'list'
   },
+  'GET /buscarBautismo': 'TurnoBautismoController.buscar',
+  '/bautismos/buscar': 'TurnoBautismoController.buscarJSON',
 
   /*
         ABM Cursos (ABMCursos)

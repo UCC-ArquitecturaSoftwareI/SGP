@@ -1,8 +1,12 @@
 <form action="/buscarBautismo" method="get" style="width: 65%; margin:auto;">
   <div class="form-row">
-    <label for="nombre">Buscar</label>
-    <input type="text" name="nombre" onkeyup="buscarBautismo()">
-    <a href="/bautismos/add" class="btn-info btn">Nuevo Turno</a>
+    <div class="form-group col-md-9">
+      <label for="nombre">Buscar</label>
+      <input type="text" name="nombre" onkeyup="buscarBautismo()" placeholder="Busqueda de turno por nombre" size="50">
+    </div>
+    <div class="col">
+      <a href="/bautismos/add" class="btn-info btn">Nuevo Turno</a>
+    </div>
   </div>
 </form>
 
@@ -18,11 +22,12 @@
   </thead>
   <tbody id="tabla">
   <% for(var i = 0; i < a.length ; i++){
-   var fecha = new Date(a[i].fecha*1); %>
+    var fecha = new Date(a[i].fecha * 1); %>
   <tr>
     <td><%= a[i].nombre %></td>
     <td><%= a[i].dni %></td>
-    <td><%= ("00"+fecha.getDate()).substr(-2) %>/<%= ("00"+(fecha.getMonth()+1)).substr(-2) %>/<%= fecha.getFullYear() %></td>
+    <td><%= ("00" + fecha.getDate()).substr(-2) %>/<%= ("00" + (fecha.getMonth() + 1)).substr(-2) %>
+      /<%= fecha.getFullYear() %></td>
     <td><%= a[i].turno %></td>
     <td>
       <a href="/TurnoBautismo/<%= a[i].id %>" class="btn-info btn">
