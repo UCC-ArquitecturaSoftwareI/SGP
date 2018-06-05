@@ -38,11 +38,11 @@ async function buscarPersona() {
         '<td>'+dato.correo+'</td>' +
         '<td>'+dato.direccion+'</td>' +
         '<td>' +
-        '<a href="/formulario/<%= persona[i].id%>" class="btn-info btn">' +
+        '<a href="/formulario/<%=persona[i].id%>" class="btn-info btn">' +
         '<i class="fas fa-pencil-alt"></i>' +
         '</a>' +
         '</td>' +
-        '<td><button class="btn-info btn" data-toggle="modal" data-target="#deleteModal">' +
+        '<td><button class="btn-danger btn" data-toggle="modal" data-target="#deleteModal">' +
         '<i class="fas fa-trash"></i>' +
         '</button>' +
         '<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
@@ -57,7 +57,7 @@ async function buscarPersona() {
         '<div class="modal-body"></div>' +
         '<div class="modal-footer">' +
         '<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>' +
-        '<a class="btn btn-primary" href="/eliminar/<%= persona[i].id ">Eliminar</a>' +
+        '<a class="btn btn-primary" href="/eliminar/<%=persona[i].id">Eliminar</a>' +
         '</div>' +
         '</div>' +
         '</div>' +
