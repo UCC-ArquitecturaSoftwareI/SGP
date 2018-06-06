@@ -38,18 +38,18 @@ async function buscarPersona() {
         '<td>'+dato.correo+'</td>' +
         '<td>'+dato.direccion+'</td>' +
         '<td>' +
-        '<a href="/formulario/<%=persona[i].id%>" class="btn-info btn">' +
+        '<a href="/persona/formulario/' + dato.id + '" ' + 'class="btn-info btn">' +
         '<i class="fas fa-pencil-alt"></i>' +
         '</a>' +
         '</td>' +
-        '<td><button class="btn-danger btn" data-toggle="modal" data-target="#deleteModal">' +
+        '<td><button class="btn-danger btn" data-toggle="modal" data-target="#deleteModal' + dato.id + '" ' + '>' +
         '<i class="fas fa-trash"></i>' +
         '</button>' +
-        '<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+        '<div class="modal fade" id="deleteModal' + dato.id + '" ' + 'tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
         '<div class="modal-dialog" role="document">' +
         '<div class="modal-content">' +
         '<div class="modal-header">' +
-        '<h5 class="modal-title" id="exampleModalLabel2">¿Seguro que desea eliminar?</h5>' +
+        '<h5 class="modal-title" id="exampleModalLabel2' + dato.id + '" ' + '>¿Seguro que desea eliminar?</h5>' +
         '<button class="close" type="button" data-dismiss="modal" aria-label="Close">' +
         '<span aria-hidden="true">×</span>' +
         '</button>' +
@@ -57,7 +57,7 @@ async function buscarPersona() {
         '<div class="modal-body"></div>' +
         '<div class="modal-footer">' +
         '<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>' +
-        '<a class="btn btn-primary" href="/eliminar/<%=persona[i].id">Eliminar</a>' +
+        '<a class="btn btn-primary" href="/persona/eliminar/' + dato.id + '" ' + '>Eliminar</a>' +
         '</div>' +
         '</div>' +
         '</div>' +

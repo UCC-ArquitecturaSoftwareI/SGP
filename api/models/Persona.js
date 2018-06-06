@@ -34,6 +34,11 @@ module.exports = {
       required: true,
     },
 
+    borrada: {
+      type: 'boolean',
+      defaultsTo: false,
+    },
+
     /*
     Collections
     */

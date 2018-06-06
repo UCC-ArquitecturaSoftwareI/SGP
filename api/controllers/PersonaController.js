@@ -35,7 +35,10 @@ module.exports = {
     res.redirect('/persona/lista');
   },
   eliminar: async function (req, res) {
-    await Persona.destroy({id: req.allParams().id});
+    //await Persona.destroy({id: req.allParams().id});
+    let persona = await Persona.find({id: req.allParams().id});
+    persona[0].borrada = true;
+    await Persona.update({id: req.allParams().id},persona[0]);
     res.redirect('/persona/lista');
   },
   devolverFormulario: async function (req, res) {
@@ -71,12 +74,13 @@ module.exports = {
           {nombre: {contains: req.allParams().dato}},
           {apellido: {contains: req.allParams().dato}},
           {dni: {contains: req.allParams().dato}},
-        ]
+        ],
+        borrada: false,
       });
     res.json(personas);
   },
   lista: async function (req, res) {
-    var personas = await Persona.find({});
+    var personas = await Persona.find({borrada: false});
 
     res.view('pages/personas/listasa', {persona: personas});
   },
