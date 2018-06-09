@@ -52,6 +52,7 @@ module.exports = {
         correo: null,
         direccion: null,
         act: 'agregar',
+        modalText: 'No se guardará la nueva persona',
       };
     } else {
       var sujeto = await Persona.find({id: req.allParams().id});
@@ -63,6 +64,7 @@ module.exports = {
         correo: sujeto[0].correo,
         direccion: sujeto[0].direccion,
         act: 'modificar',
+        modalText: 'No se modificarán los datos de la persona',
       };
     }
     res.view('pages/personas/formulario', {persona: ret});
