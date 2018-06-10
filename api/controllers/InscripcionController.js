@@ -27,18 +27,16 @@ module.exports = {
 
   cursoDetalle: async function (req, res) {
     console.log(req.allParams());
-    var cursoId = req.param('cursoId', -1);
+    var cursoId = req.param('cursoId', "-1");
 
-    var curso = await Curso.find(
+    // Really? Fetch all records and filter later? WTF, there must be a better way. Anyways we need this working soon.
+    var inscripciones = await Inscripcion.find().populate('curso').populate('persona');
 
-      {id: cursoId}
-
-    );
+    var filtered = inscripciones.filter(i => i.curso.id.toString() === cursoId);
 
     res.view('pages/inscripcion/inscripcionPersona.ejs',
-      { curso: curso[0]});
-
-
+      { curso: filtered[0].curso.id, inscripciones: filtered }
+      );
   }
 
 
