@@ -105,7 +105,8 @@ module.exports.routes = {
         ABM Bautismos (PUBG)
    */
   '/bautismos/add': {
-    view: 'pages/bautismos/addBautismo'
+    controller: 'TurnoBautismoController',
+    action: 'listarpersonas',
   },
   '/bautismos': {
     controller: 'TurnoBautismoController',
@@ -115,10 +116,13 @@ module.exports.routes = {
     controller: 'TurnoBautismoController',
     action: 'ver'
   },
-  'GET /buscarBautismo': 'TurnoBautismoController.buscar',
+  'POST /addBautismo': {
+    controller: 'TurnoBautismoController',
+    action: 'agregar',
+  },
   '/bautismos/buscar': 'TurnoBautismoController.buscarJSON',
   '/bautismos/listar': 'TurnoBautismoController.listarJSON',
-
+  '/bautismos/listarpersonas': 'TurnoBautismoController.listarpersonasJSON',
   /*
         ABM Cursos (ABMCursos)
    */
