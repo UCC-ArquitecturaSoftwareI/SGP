@@ -34,7 +34,7 @@ module.exports = {
 
     var filtered = inscripciones.filter(i => i.curso.id.toString() === cursoId);
 
-    res.view('pages/inscripcion/inscripcionPersona.ejs', { curso: filtered[0].curso.id, inscripciones: filtered });
+    res.view('pages/inscripcion/inscripcionPersona.ejs', { curso: filtered[0].curso, inscripciones: filtered });
   }
 
 
