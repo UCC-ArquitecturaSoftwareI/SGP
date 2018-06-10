@@ -156,7 +156,11 @@ module.exports.routes = {
     action: 'buscarCurso'
   },
 
-  //'/inscripcion/buscar': 'InscripcionController.buscarCurso',
+  'GET /inscripcion/cursoDetalle/:cursoId': {
+    controller: 'InscripcionController',
+    action: 'cursoDetalle',
+  },
+
 
 
 
