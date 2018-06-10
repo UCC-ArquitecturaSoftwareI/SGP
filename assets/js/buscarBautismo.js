@@ -23,7 +23,7 @@ async function buscarBautismo() {
         '<td>' + dato.dni + '</td>' +
         '<td>' + ("00" + fecha.getDate()).substr(-2) + '/' + ("00" + (fecha.getMonth() + 1)).substr(-2) + '/' + fecha.getFullYear() + '</td>' +
         '<td>' + dato.turno + '</td>' +
-        '<td>      <a href="/TurnoBautismo/<%= a[i].id %>" class="btn-info btn">\n' +
+        '<td>      <a href="/bautismos/'+dato.id+'" class="btn btn-primary">\n' +
         '        <i class="fas fa-eye"></i>\n' +
         '      </a></td>' +
         '</tr>';
@@ -52,7 +52,7 @@ async function buscarBautismo() {
         '<td>' + dato.dni + '</td>' +
         '<td>' + ("00" + fecha.getDate()).substr(-2) + '/' + ("00" + (fecha.getMonth() + 1)).substr(-2) + '/' + fecha.getFullYear() + '</td>' +
         '<td>' + dato.turno + '</td>' +
-        '<td>      <a href="/TurnoBautismo/<%= a[i].id %>" class="btn-info btn">\n' +
+        '<td>      <a href="/bautismos/'+dato.id+'" class="btn btn-primary">\n' +
         '        <i class="fas fa-eye"></i>\n' +
         '      </a></td>' +
         '</tr>';

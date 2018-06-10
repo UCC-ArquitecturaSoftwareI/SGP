@@ -15,12 +15,19 @@ module.exports = {
     res.view('pages/bautismos/bautismos', {a: bautismos});
   },
 
-  buscar: async function (req, res) {
+  agregar: async function (req, res) {
+    var param = req.allParams();
+    var nuevobautismo = {
+      nombre: param.nombre,
+      dni: param.dni,
+      fecha: param.fecha,
+      turno: param.turno,
+      padrinos: param.padrinos,                 <!-- preguntar como manejar colecciones -->
+    };
 
-    var bautismos = await TurnoBautismo.find({nombre: req.allParams().nombre});
-
+    datos = await TurnoBautismo.create(nuevobautismo);
+    var bautismos = await TurnoBautismo.find({});
     res.view('pages/bautismos/bautismos', {a: bautismos});
-
   },
 
   buscarJSON: async function (req, res) {
@@ -57,5 +64,17 @@ module.exports = {
     };
     res.view('pages/bautismos/verBautismo', {a: ret});
   },
+
+  listarpersonas: async function (req,res) {
+    var personas = await Persona.find({});
+
+    res.view('pages/bautismos/addBautismo', {persona: personas});
+  },
+
+  listarpersonasJSON: async function (req,res) {
+    var personas = await Persona.find({});
+
+    res.json(personas);
+  }
 };
 
