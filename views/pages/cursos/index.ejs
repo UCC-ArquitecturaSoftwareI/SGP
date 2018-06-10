@@ -1,0 +1,66 @@
+<h2 style="color: #408080">registro de cursos</h2>
+<form>
+  <div class="form-row col-md">
+    <div class="form group-row col-md-2">
+      <label for="nombreDelCurso" style="color: #408080">nombre de curso</label>
+      <input class="form-control" type="text" id="nombreDelCurso" placeholder="..." autocomplete="off" >
+       </div>
+    <div class="input-group col-md-5">
+      <div class="input-group-prepped">
+        <span class="input-group-text"id="" style="color: #408080">fecha de inicio y de finalizado</span>
+      </div>
+      <input type="text" class="form-control" placeholder="--/--/--">
+      <input type="text" class="form-control" placeholder="--/--/--">
+    </div>
+    <div class="form group-row col-md-2">
+      <button type="reset" id="btnD" class="btn" style="background-color: #00A000">borrar</button>
+    </div>
+  </div>
+  <div class="from group col-md-4">
+    <label for="diacurso" style="color: #408080">dia de cursado</label>
+    <select class="form-control" id="diacurso">
+      <option selected>....</option>
+      <option>lunes</option>
+      <option>martes</option>
+      <option>miercoles</option>
+      <option>jueves</option>
+      <option>viernes</option>
+    </select>
+  </div>
+  <h2 style="color: #408080">registro de horarios</h2>
+  <div class="form-row col-md-6">
+    <div class="form group col-md-4">
+      <label for="horaincio" style="color: #408080">horario de inicio de cursado</label>
+      <input type="text" class="form-control" id="horaincio" placeholder="--:--:--">
+    </div>
+    <div class="form group col-md-4">
+      <label for="horafinal" style="color: #408080">horario de finalizado</label>
+      <input type="text" class="form-control" id="horafinal" placeholder="--:--:--">
+    </div>
+  </div>
+  <h2 style="color: #408080">registro de aula y temas a tratar</h2>
+  <div class="form group col-md-4">
+    <label for="aula" style="color: #408080">aula</label>
+    <select class="form-control" id="aula">
+      <option selected>...</option>
+      <option></option>
+    </select>
+  </div>
+  <div class="form group col-md-4">
+    <label for="descripcion" style="color: #408080">temas a tratar durante el cursado</label>
+    <textarea class="form-control" id="descripcion" rows="4" placeholder=". . . . ."></textarea>
+  </div>
+  <div class="form group col-md-4">
+    <label for="cupos" style="color: #408080">cupos disponibles</label>
+    <input type="text"class="form-control" id="cupos">
+  </div>
+  <div class="form group">
+    <button type="submit" class="btn col-md-1" style="background-color: #00A000;margin-top: 15px">listo</button>
+  </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>

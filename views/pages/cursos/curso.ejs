@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h1>Lista de cursos/h1>
+    </div>
+    <div class="col-sm">
+      <a href="/curso/formulario/0" class="btn-info btn"><i class="fas fa-plus"></i></a>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
+
+table id="curso" class="table table-striped table-hover" style="width: 50%; margin:auto;">
+<thead>
+<tr>
+  <th>#</th>
+  <th>Noombre</th>
+  <th>Fecha Inicio</th>
+  <th>Fecha Fin</th>
+  <th>Dias</th>
+  <th>Hora Inicio</th>
+  <th>Hora Fin</th>
+  <th>aula</th>
+  <th>Cupo</th>
+  <th></th>
+</tr>
+</thead>
+
+
+<tbody id="tabla">
+<% for(var i = 0; i < curso.length ; i++){ %>
+<tr>
+  <td><%= curso[i].nombre %></td>
+  <td><%= curso[i].fechaInicio %></td>
+  <td><%= curso[i].fechaInicio %></td>
+  <td><%= curso[i].horaFin %></td>
+  <td><%= curso[i].dias %></td>
+  <td><%= curso[i].horaInicio %></td>
+  <td><%= curso[i].fechaFin %></td>
+  <td><%= curso[i].aula %></td>
+  <td><%= curso[i].cupo %></td>
