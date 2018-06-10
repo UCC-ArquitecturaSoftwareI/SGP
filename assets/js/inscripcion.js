@@ -52,7 +52,7 @@ async function encontrarPersona() {
 
     console.log(json);
 
-    let t = document.getElementById('tabla');
+    let t = document.getElementById('tablaBusqueda');
 
     t.innerHTML = '';
     for( let dato of json){
