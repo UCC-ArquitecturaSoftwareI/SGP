@@ -54,7 +54,7 @@ module.exports = {
       dni: bautismo[0].dni,
       fecha: bautismo[0].fecha,
       turno: bautismo[0].turno,
-      };
+    };
     res.view('pages/bautismos/verBautismo', {a: ret});
   },
 };
