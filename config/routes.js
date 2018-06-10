@@ -108,8 +108,16 @@ module.exports.routes = {
     view: 'pages/bautismos/addBautismo'
   },
   '/bautismos': {
-    view: 'pages/bautismos/bautismos'
+    controller: 'TurnoBautismoController',
+    action: 'list'
   },
+  '/bautismos/:id': {
+    controller: 'TurnoBautismoController',
+    action: 'ver'
+  },
+  'GET /buscarBautismo': 'TurnoBautismoController.buscar',
+  '/bautismos/buscar': 'TurnoBautismoController.buscarJSON',
+  '/bautismos/listar': 'TurnoBautismoController.listarJSON',
 
   /*
         ABM Cursos (ABMCursos)

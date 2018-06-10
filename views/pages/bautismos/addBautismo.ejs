@@ -1,13 +1,14 @@
 <div class="container">
-  <form method="post" action="/addBautismo" >
+  <form method="post" action="/addBautismo">
     <div class="form-group">
-      <label for="inputpadrino">Padrin@s</label>
+      <label for="inputpadrino">Padrino(s) y Madrina(s)</label>
       <div class="form-row">
-        <div class="col-11">
-          <input name="padrino" class="form-control" id="inputpadrino" type="text" placeholder="Busqueda de padrino/madrina">
+        <div class="col-10">
+          <button type="button" class="btn btn-light" data-toggle="modal" data-target="#ModalPadrino">
+            Seleccionar Padrinos y madrinas</button>
         </div>
         <div class="col-auto">
-          <a data-toggle="modal" href="#ModalPadrino" style="color:rgba(0,123,255,1.0)"><i class="fas fa-plus-square fa-2x"></i></a>
+          <a class="btn btn-primary" href="/persona/formulario/0" role="button">Nueva Persona</a>
         </div>
       </div>
     </div>
@@ -35,39 +36,19 @@
 
 
 <!-- Modal Padrinos-->
-<div class="modal fade" id="ModalPadrino" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="ModalPadrino" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Agregar nuevo padrino/madrina</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Seleccionar padrinos y madrinas</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form>
-          <div class="form-row">
-            <div class="form-group col-md">
-              <label for="inputnombrep">Nombre</label>
-              <input type="text" class="form-control" id="inputnombrep" placeholder="Nombre" name="nombrep">
-            </div>
-            <div class="form-group col-md">
-              <label for="inputapellidop">Apellido</label>
-              <input type="text" class="form-control" id="inputapellidop" placeholder="Apellido" name="apellidop">
-            </div>
-            <div class="form-group col-md-auto">
-              <label for="inputdnip">DNI</label>
-              <input type="text" class="form-control" id="inputdnip" placeholder="DNI" name="dnip">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputcorreop">Correo electronico</label>
-            <input type="email" class="form-control" id="inputcorreop" placeholder="Email" name="correop">
-          </div>
-          <div class="form-group">
-            <label for="inputdireccionp">Direccion</label>
-            <input type="text" class="form-control" id="inputdireccionp" placeholder="Direccion" name="direccionp">
-          </div>
+
         </form>
       </div>
       <div class="modal-footer">
