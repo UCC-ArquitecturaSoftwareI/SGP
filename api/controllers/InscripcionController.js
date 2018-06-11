@@ -38,6 +38,18 @@ module.exports = {
   }
 
 
+  PersonaCurso: async function(req, res) {
+
+    let person = req.allParams();
+
+    Inscripcion.create({
+      persona:,
+      curso:,
+    })
+
+    return res.ok();
+  }
+
 
 
 
