@@ -22,14 +22,16 @@ module.exports = {
       )
     }
     var people = [];
-    for (var i=0; i<personas.length; i++){
-      people.push(
-        await persona[i].nombre
-      )
-    }
-    console.log(personas);
+    for (var i=0; i<personas.length; i++) {
+        var temp = personas[i];
+        people.push(
+          await Persona.findOne({id:temp})
+        )
+      }
 
-    res.view('pages/asistencia/lista', {pers: personas.pers});
+    console.log(people);
+
+    res.view('pages/asistencia/lista', {pers: people.pers});
 
   },
   curso: async function (req, res){
