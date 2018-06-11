@@ -31,7 +31,7 @@ module.exports = {
 
     console.log(people);
 
-    res.view('pages/asistencia/lista', {pers: people.pers});
+    res.view('pages/asistencia/lista', {pers: people});
 
   },
   curso: async function (req, res){
