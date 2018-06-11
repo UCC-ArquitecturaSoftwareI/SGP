@@ -6,17 +6,30 @@
  */
 
 module.exports = {
-  agregar: async function (req, res){
 
-  },
-  modificar: async function (req, res){
+  verAsistencia: async function (req, res){
 
+    res.view('pages/asistencia/verAsistencia');
   },
-  eliminar: async function (req, res){
 
-  },
   lista: async function (req, res){
-    res.view('pages/asistencia/lista');
+    var course = await Curso.findOne({id:req.param('id')}).populate('inscriptos');
+    console.log(course);
+    var personas = [];
+    for (var inscripcion of course.inscriptos){
+      personas.push(
+        await inscripcion.persona
+      )
+    }
+    var people = [];
+    for (var i=0; i<personas.length; i++){
+      people.push(
+        await persona[i].nombre
+      )
+    }
+    console.log(personas);
+
+    res.view('pages/asistencia/lista', {pers: personas.pers});
 
   },
   curso: async function (req, res){
