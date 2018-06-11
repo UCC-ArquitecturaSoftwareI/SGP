@@ -12,14 +12,12 @@ $('#removeStudentModal').on('show.bs.modal', function (event) {
   modal.find('.alumno').text('Alumno: ' + alumno);
 
 
-  $('#botonRemover').on(
-    'click',
-    function(evt)
-    {
-      console.log(cursoId);
-      console.log(alumnoId);
-    }
-  );
+  var onRemove = function(evt) {
+    console.log(cursoId);
+    console.log(alumnoId);
+  };
+
+  $('#botonRemover').on('click', onRemove);
 
 
 });
