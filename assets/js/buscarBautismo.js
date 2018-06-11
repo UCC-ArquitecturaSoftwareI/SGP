@@ -27,6 +27,9 @@ async function buscarBautismo() {
         '<td>      <a href="/bautismos/' + dato.id + '" class="btn btn-primary">\n' +
         '        <i class="fas fa-eye"></i>\n' +
         '      </a></td>' +
+        '<td>      <a href="/bautismos/eliminar/' + dato.id +'" class="btn btn-primary">\n' +
+        '        <i class="fas fa-trash"></i>\n' +
+        '      </a></td>' +
         '</tr>';
     }
   }
@@ -55,6 +58,9 @@ async function buscarBautismo() {
         '<td>' + dato.turno + '</td>' +
         '<td>      <a href="/bautismos/' + dato.id + '" class="btn btn-primary">\n' +
         '        <i class="fas fa-eye"></i>\n' +
+        '      </a></td>' +
+        '<td>      <a href="/bautismos/eliminar/' + dato.id +'" class="btn btn-primary">\n' +
+        '        <i class="fas fa-trash"></i>\n' +
         '      </a></td>' +
         '</tr>';
     }

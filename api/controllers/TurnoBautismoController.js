@@ -30,6 +30,21 @@ module.exports = {
     res.view('pages/bautismos/bautismos', {a: bautismos});
   },
 
+  eliminar: async function (req, res) {
+    await TurnoBautismo.destroy({id: req.allParams().id});
+    console.log(JSON.stringify(req.allParams()));
+    var bautismos = await TurnoBautismo.find({});
+    res.view('pages/bautismos/bautismos', {a: bautismos});
+  },
+
+  eliminard: async function (req, res) {
+    //await Persona.destroy({id: req.allParams().id});
+    let persona = await Persona.find({id: req.allParams().id});
+    persona[0].borrada = true;
+    await Persona.update({id: req.allParams().id},persona[0]);
+    res.redirect('/persona/lista');
+  },
+
   buscarJSON: async function (req, res) {
     var bautismos = await TurnoBautismo.find(
       {
