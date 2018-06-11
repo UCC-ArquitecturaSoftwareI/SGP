@@ -33,7 +33,7 @@ async function buscarCurso() {
   }
 }
 
-async function encontrarPersona() {
+async function encontrarPersona(cursoId) {
 
 
 

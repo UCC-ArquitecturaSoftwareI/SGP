@@ -246,7 +246,6 @@ module.exports.bootstrap = async function (done) {
     }
     const inscr = await Inscripcion.createEach(inscripciones).fetch();
 
-
     sails.log(`Se crearon ${inscr.length} Inscripciones`);
 
 

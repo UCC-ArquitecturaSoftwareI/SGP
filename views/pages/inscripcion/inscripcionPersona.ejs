@@ -2,7 +2,7 @@
 <h1>Curso: <%= curso.nombreDelCurso %></h1>
 
 <div class="input-group mb-3">
-  <input type="text" data-provide="typeahead" placeholder="Persona" name="buscador" onkeyup="encontrarPersona()">
+  <input type="text" data-provide="typeahead" placeholder="Persona" name="buscador" onkeyup="encontrarPersona(<%= curso.nombreDelCurso %>)">
   <!--<div class="input-group-append">-->
   <!--<button class="btn btn-primary btn-block" type="button">Buscar</button>-->
   <!--</div>-->
@@ -54,6 +54,8 @@
     <td>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#removeStudentModal"
               data-alumno-nombre="<%=inscripciones[i].persona.dni + ', ' + inscripciones[i].persona.apellido + ', ' + inscripciones[i].persona.nombre%>"
+              data-alumno-id="<%=inscripciones[i].persona.id%>"
+              data-curso-id="<%=inscripciones[i].curso.id%>"
               data-inscripcion-id="<%=inscripciones[i].id%>">
         <i class="fas fa-minus-circle"></i>
       </button>
@@ -83,7 +85,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Remover</button>
+        <button id="botonRemover" type="button" class="btn btn-primary">Remover</button>
       </div>
     </div>
   </div>
