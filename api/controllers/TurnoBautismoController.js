@@ -53,7 +53,8 @@ module.exports = {
 
   ver: async function (req, res) {
     var ret;
-    var bautismo = await TurnoBautismo.find({id: req.allParams().id});
+    var bautismo = await TurnoBautismo.find({id: req.allParams().id}).populate('padrinos');
+
     ret = {
       id: bautismo[0].id,
       padrinos: bautismo[0].padrinos,

@@ -1,5 +1,6 @@
 async function buscarBautismo() {
   let txtbox = document.querySelector('input[name=\'nombre\']');
+  var fecha;
   if (txtbox.value.length >= 3) {
 
     let res = await fetch('/bautismos/buscar', {
@@ -17,13 +18,13 @@ async function buscarBautismo() {
 
     t.innerHTML = '';
     for (let dato of json) {
-      var fecha = new Date(dato.fecha * 1);
+      fecha = new Date(dato.fecha * 1);
       t.innerHTML += '<tr>' +
         '<td>' + dato.nombre + '</td>' +
         '<td>' + dato.dni + '</td>' +
-        '<td>' + ("00" + fecha.getDate()).substr(-2) + '/' + ("00" + (fecha.getMonth() + 1)).substr(-2) + '/' + fecha.getFullYear() + '</td>' +
+        '<td>' + ('00' + fecha.getDate()).substr(-2) + '/' + ('00' + (fecha.getMonth() + 1)).substr(-2) + '/' + fecha.getFullYear() + '</td>' +
         '<td>' + dato.turno + '</td>' +
-        '<td>      <a href="/bautismos/'+dato.id+'" class="btn btn-primary">\n' +
+        '<td>      <a href="/bautismos/' + dato.id + '" class="btn btn-primary">\n' +
         '        <i class="fas fa-eye"></i>\n' +
         '      </a></td>' +
         '</tr>';
@@ -46,13 +47,13 @@ async function buscarBautismo() {
 
     t.innerHTML = '';
     for (let dato of json) {
-      var fecha = new Date(dato.fecha * 1);
+      fecha = new Date(dato.fecha * 1);
       t.innerHTML += '<tr>' +
         '<td>' + dato.nombre + '</td>' +
         '<td>' + dato.dni + '</td>' +
-        '<td>' + ("00" + fecha.getDate()).substr(-2) + '/' + ("00" + (fecha.getMonth() + 1)).substr(-2) + '/' + fecha.getFullYear() + '</td>' +
+        '<td>' + ('00' + fecha.getDate()).substr(-2) + '/' + ('00' + (fecha.getMonth() + 1)).substr(-2) + '/' + fecha.getFullYear() + '</td>' +
         '<td>' + dato.turno + '</td>' +
-        '<td>      <a href="/bautismos/'+dato.id+'" class="btn btn-primary">\n' +
+        '<td>      <a href="/bautismos/' + dato.id + '" class="btn btn-primary">\n' +
         '        <i class="fas fa-eye"></i>\n' +
         '      </a></td>' +
         '</tr>';
