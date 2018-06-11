@@ -2,10 +2,7 @@
 <h1>Curso: <%= curso.nombreDelCurso %></h1>
 
 <div class="input-group mb-3">
-  <input type="text" data-provide="typeahead" placeholder="Persona" name="buscador" onkeyup="encontrarPersona(<%= curso.nombreDelCurso %>)">
-  <!--<div class="input-group-append">-->
-  <!--<button class="btn btn-primary btn-block" type="button">Buscar</button>-->
-  <!--</div>-->
+  <input type="text" data-provide="typeahead" placeholder="Persona" name="buscador" onkeyup="encontrarPersona(<%= curso.id %>)">
 </div>
 
 

@@ -33,7 +33,7 @@ async function buscarCurso() {
   }
 }
 
-async function encontrarPersona(cursoId) {
+async function encontrarPersona(cursoID) {
 
 
 
@@ -72,9 +72,20 @@ async function encontrarPersona(cursoId) {
         '<a href="/formulario/<%= persona[i].id%>" class="btn-info btn">' +
         '<i class="fas fa-eye"></i>' +
         '</a>' +
+        '<button onclick="inscribirPersona(' + dato.id + ',' + cursoID + ')"' +
+        'class="btn-info btn">' +
+        '<i class=" fas fa-plus-circle"></i>' +
+        '</button> '+
+
         '</td>' +
         '</tr>';
     }
   }
 }
 
+async function inscribirPersona(persona, curso) {
+
+  console.log(persona);
+  console.log(curso);
+
+}

@@ -35,8 +35,20 @@ module.exports = {
     var filtered = inscripciones.filter(i => i.curso.id.toString() === cursoId);
 
     res.view('pages/inscripcion/inscripcionPersona.ejs', { curso: filtered[0].curso, inscripciones: filtered });
-  }
+  },
 
+
+  personaCurso: async function(req, res) {
+
+    let person = req.allParams();
+
+    Inscripcion.create({
+      persona: '',
+      curso:'',
+    });
+
+    return res.ok();
+  }
 
 
 
