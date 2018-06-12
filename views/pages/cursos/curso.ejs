@@ -8,11 +8,12 @@
     </div>
     <div class="col-sm">
 
+
     </div>
   </div>
 </div>
 
-table id="curso" class="table table-striped table-hover" style="width: 50%; margin:auto;">
+table id="cursos" class="table table-striped table-hover" style="width: 50%; margin:auto;">
 <thead>
 <tr>
   <th>#</th>
@@ -41,3 +42,25 @@ table id="curso" class="table table-striped table-hover" style="width: 50%; marg
   <td><%= curso[i].fechaFin %></td>
   <td><%= curso[i].aula %></td>
   <td><%= curso[i].cupo %></td>
+  <td>
+    <a href="/curso/formulario/<%= curso[i].id%>"><i class="icon-pencil"></i></a>
+    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel2">¿Seguro que desea eliminar?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="/curso/eliminar/<%= curso[i].id %>">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </td>
+</tr>
