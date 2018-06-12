@@ -173,6 +173,21 @@ module.exports.routes = {
     action: 'cursoDetalle',
   },
 
+  'POST /inscripcion/removerAlumno': {
+    controller: 'InscripcionController',
+    action: 'removerAlumno'
+  },
+
+  'POST /inscripcion/inscribir' : {
+    controller: 'InscripcionController',
+    action: 'inscribir'
+  },
+
+  'POST /inscripcion/Inscriptos' : {
+    controller: 'InscripcionController',
+    action: 'buscarInscriptos'
+  },
+
 
 
 

@@ -9,6 +9,7 @@ async function buscarCurso() {
 
     let res = await fetch('/inscripcion/buscar', {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({nombre: txtbox.value}), // data can be `string` or {object}!
       headers: {
         'Content-Type': 'application/json'
@@ -33,7 +34,7 @@ async function buscarCurso() {
   }
 }
 
-async function encontrarPersona() {
+async function encontrarPersona(cursoID) {
 
 
 
@@ -43,9 +44,10 @@ async function encontrarPersona() {
 
     let res = await fetch('/persona/buscar', {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({dato: txtbox.value}), // data can be `string` or {object}!
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     });
     let json = await res.json();
@@ -56,6 +58,26 @@ async function encontrarPersona() {
 
     t.innerHTML = '';
     for( let dato of json){
+
+      // let ides = new Object();
+      // ides.persona = dato.id;
+      // ides.curso = cursoID;
+
+      // console.log(ides);
+
+      let inscripto =  await fetch('/inscripcion/Inscriptos', {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify( {curso: cursoID, persona: dato.id} ), // data can be `string` or {object}!
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      let inscriptojson = await inscripto.json();
+
+      console.log(inscriptojson);
+
+      if(!inscriptojson[0] /* || inscriptojson[inscriptojson.length - 1].baja */){
 
       t.innerHTML += '<tr>' +
         '<td>'+dato.nombre+'</td>' +
@@ -72,9 +94,33 @@ async function encontrarPersona() {
         '<a href="/formulario/<%= persona[i].id%>" class="btn-info btn">' +
         '<i class="fas fa-eye"></i>' +
         '</a>' +
+        '<button onclick="inscribirPersona(' + dato.id + ',' + cursoID + ')"' +
+        'class="btn-info btn">' +
+        '<i class=" fas fa-plus-circle"></i>' +
+        '</button> '+
+
         '</td>' +
         '</tr>';
+      }
     }
   }
 }
 
+async function inscribirPersona(persona, curso) {
+
+  let res = await fetch('/inscripcion/inscribir', {
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify( {cursoId: curso, personaId: persona} ), // data can be `string` or {object}!
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+
+  if(res.status === 200 ) {
+    // Refresh after successful removal
+    location.reload();
+
+  }
+
+}
