@@ -1,5 +1,5 @@
 <h1>Listado de alumnos</h1>
-<h3>Asistencia</h3>
+<h3>Toma de asistencia</h3>
 
 <table id="alumno" class="table table-striped table-hover" style="width: 50%; margin:auto;">
   <thead>
@@ -15,9 +15,14 @@
     <td><%= pers[i].nombre %></td>
     <td><%= pers[i].apellido %></td>
     <td>
-      <input type="checkbox">
+        <input onclick="" type="checkbox">
+
     </td>
   </tr>
   <% } %>
   </tbody>
+    <a href="/asistencia/curso" class="btn btn-outline-success btn-lg" >
+      <i class="fas fa-check"></i>
+    </a>
+
 </table>
