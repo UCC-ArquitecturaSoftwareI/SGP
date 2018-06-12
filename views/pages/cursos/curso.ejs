@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <h1>Lista de cursos/h1>
+      <h1>Lista de cursos</h1>
     </div>
     <div class="col-sm">
-      <a href="/curso/formulario/0" class="btn-info btn"><i class="fas fa-plus"></i></a>
+      <a href="/cursos/formulario/0" class="btn-info btn"><i class="fas fa-plus"></i></a>
     </div>
     <div class="col-sm">
 
@@ -13,54 +13,58 @@
   </div>
 </div>
 
-table id="cursos" class="table table-striped table-hover" style="width: 50%; margin:auto;">
-<thead>
-<tr>
-  <th>#</th>
-  <th>Noombre</th>
-  <th>Fecha Inicio</th>
-  <th>Fecha Fin</th>
-  <th>Dias</th>
-  <th>Hora Inicio</th>
-  <th>Hora Fin</th>
-  <th>aula</th>
-  <th>Cupo</th>
-  <th></th>
-</tr>
-</thead>
+<table id="cursos" class="table table-striped table-hover" style="width: 50%; margin:auto;">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Noombre</th>
+    <th>Fecha Inicio</th>
+    <th>Fecha Fin</th>
+    <th>Dias</th>
+    <th>Hora Inicio</th>
+    <th>Hora Fin</th>
+    <th>aula</th>
+    <th>Cupo</th>
+    <th></th>
+  </tr>
+  </thead>
 
 
-<tbody id="tabla">
-<% for(var i = 0; i < curso.length ; i++){ %>
-<tr>
-  <td><%= curso[i].nombre %></td>
-  <td><%= curso[i].fechaInicio %></td>
-  <td><%= curso[i].fechaInicio %></td>
-  <td><%= curso[i].horaFin %></td>
-  <td><%= curso[i].dias %></td>
-  <td><%= curso[i].horaInicio %></td>
-  <td><%= curso[i].fechaFin %></td>
-  <td><%= curso[i].aula %></td>
-  <td><%= curso[i].cupo %></td>
-  <td>
-    <a href="/curso/formulario/<%= curso[i].id%>"><i class="icon-pencil"></i></a>
-    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel2">¿Seguro que desea eliminar?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body"></div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="/curso/eliminar/<%= curso[i].id %>">Eliminar</a>
+  <tbody id="tabla">
+  <% for(var i = 0; i < curso.length ; i++){ %>
+  <tr>
+    <td><%= curso[i].nombre %></td>
+    <td><%= curso[i].fechaInicio %></td>
+    <td><%= curso[i].fechaInicio %></td>
+    <td><%= curso[i].horaFin %></td>
+    <td><%= curso[i].dias %></td>
+    <td><%= curso[i].horaInicio %></td>
+    <td><%= curso[i].fechaFin %></td>
+    <td><%= curso[i].aula %></td>
+    <td><%= curso[i].cupo %></td>
+    <td>
+      <a class="btn btn-info" href="/cursos/formulario/<%= curso[i].id %>"><i class="fas fa-pencil-alt"></i></a>
+      <a class="btn btn-danger" href="#deleteModal<%= curso[i].id %>" role="button" data-toggle="modal"><i class="fas fa-trash"></i></a>
+      <div class="modal fade" id="deleteModal<%= curso[i].id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel2">¿Seguro que desea eliminar?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+              <a class="btn btn-primary" href="/cursos/eliminar/<%= curso[i].id %>">Eliminar</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </td>
-</tr>
+    </td>
+  </tr>
+  <% } %>
+  </tbody>
+</table>

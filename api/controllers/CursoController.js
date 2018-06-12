@@ -20,7 +20,7 @@ module.exports = {
       Cupo: param.Cupo,
     };
 
-    datos = await curso.create(nuevoCurso);
+    datos = await Curso.create(nuevoCurso);
     res.view('pages/cursos/curso', {curso: cursos});
   },
   modificar: async function (req, res) {
@@ -42,12 +42,12 @@ module.exports = {
     res.view('pages/cursos/curso', {curso: cursos});
   },
   eliminar: async function (req, res) {
-    await curso.destroy({id: req.allParams().id});
+    await Curso.destroy({id: req.allParams().id});
     console.log(JSON.stringify(req.allParams()));
     res.redirect('/cursos/curso');
   },
   buscar: async function (req, res) {
-    var cursos = await curso.find(
+    var cursos = await Curso.find(
       {
         or: [
           {nombre: {contains: req.allParams().dato}},
@@ -57,7 +57,7 @@ module.exports = {
     res.json(personas);
   },
   lista: async function (req, res) {
-    var cursos = await curso.find({});
+    var cursos = await Curso.find({});
 
     res.view('pages/cursos/curso', {curso: cursos});
   },
@@ -76,7 +76,7 @@ module.exports = {
         Cupo: null
       };
     } else {
-      var sujeto = await curso.find({id: req.allParams().id});
+      var sujeto = await Curso.find({id: req.allParams().id});
       ret = {
         id: sujeto[0].id,
         nombre: sujeto[0].nombre,

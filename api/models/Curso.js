@@ -65,5 +65,8 @@ module.exports = {
     },
 
   },
-
+  beforeCreate: function (valuesToSet, proceed) {
+    if (err) { return proceed('Ocurrio un error'); }
+    return proceed();
+  }
 };

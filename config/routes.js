@@ -125,7 +125,7 @@ module.exports.routes = {
     controller: 'CursoController',
     action: 'agregar'
   },
-  '/cursos/formulario': {
+  '/cursos/formulario/:id': {
     controller: 'CursoController',
     action: 'formulario'
   },
