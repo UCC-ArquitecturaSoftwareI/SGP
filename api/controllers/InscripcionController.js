@@ -77,7 +77,21 @@ module.exports = {
     var result = await Inscripcion.update( { id: param.inscripcionId } ).set( { baja: true} );
 
     res.ok();
-  }
+  },
+
+  buscarInscriptos: async function (req, res) {
+
+    let param = req.allParams();
+    let personaId = param.persona;
+    let cursoId = param.curso;
+
+    console.log('Este ID llega a buscarInscriptos ' + personaId);
+    console.log('Este ID llega a buscarInscriptos ' + cursoId);
+
+
+    var inscriptos = await Inscripcion.find({persona: personaId, curso: cursoId});
+    res.json(inscriptos);
+  },
 
 
 

@@ -59,6 +59,26 @@ async function encontrarPersona(cursoID) {
     t.innerHTML = '';
     for( let dato of json){
 
+      // let ides = new Object();
+      // ides.persona = dato.id;
+      // ides.curso = cursoID;
+
+      // console.log(ides);
+
+      let inscripto =  await fetch('/inscripcion/Inscriptos', {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify( {curso: cursoID, persona: dato.id} ), // data can be `string` or {object}!
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      let inscriptojson = await inscripto.json();
+
+      console.log(inscriptojson);
+
+      if(!inscriptojson[0] /* || inscriptojson[inscriptojson.length - 1].baja */){
+
       t.innerHTML += '<tr>' +
         '<td>'+dato.nombre+'</td>' +
         '<td>'+dato.apellido+'</td>' +
@@ -81,6 +101,7 @@ async function encontrarPersona(cursoID) {
 
         '</td>' +
         '</tr>';
+      }
     }
   }
 }
