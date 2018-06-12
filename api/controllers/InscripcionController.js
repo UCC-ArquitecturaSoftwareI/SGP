@@ -29,18 +29,18 @@ module.exports = {
     console.log(req.allParams());
     var cursoId = req.param('cursoId', '-1');
 
-    var tamanoCurso = 3
+    var tamanoCurso = 3;
 
 
     // Really? Fetch all records and filter later? WTF, there must be a better way. Anyways we need this working soon.
     var inscripcionesFull = await Inscripcion.find().populate('curso').populate('persona');
 
     var inscriptos = inscripcionesFull.filter(i => i.curso.id.toString() === cursoId && i.baja === false); //.slice(0,tamanoCurso - 1);
-    var enespera = null
+    var enespera = null;
 
     if(inscriptos.length > tamanoCurso) {
-      enespera = inscriptos.slice(tamanoCurso, inscriptos.length)
-      inscriptos = inscriptos.slice(0, tamanoCurso)
+      enespera = inscriptos.slice(tamanoCurso, inscriptos.length);
+      inscriptos = inscriptos.slice(0, tamanoCurso);
     }
 
 
