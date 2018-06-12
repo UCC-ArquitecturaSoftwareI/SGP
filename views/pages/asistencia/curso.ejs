@@ -14,12 +14,12 @@
   <tr>
     <td><%= docencia[i].nombreDelCurso %></td>
     <td>
-      <a class="btn-outline-info btn">
+      <a href="/asistencia/verAsistencia/<%= docencia[i].id %>" class="btn-outline-info btn">
         <i class="fas fa-eye"></i>
       </a>
     </td>
     <td>
-      <a href="/asistencia/lista/" class="btn-outline-primary btn">
+      <a href="/asistencia/lista/<%= docencia[i].id %>" class="btn-outline-primary btn">
         <i class="fas fa-plus"></i>
       </a>
     </td>
