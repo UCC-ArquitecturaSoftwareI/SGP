@@ -161,6 +161,16 @@ module.exports.routes = {
     action: 'cursoDetalle',
   },
 
+  'POST /inscripcion/removerAlumno': {
+    controller: 'InscripcionController',
+    action: 'removerAlumno'
+  },
+
+  'POST /inscripcion/inscribir' : {
+    controller: 'InscripcionController',
+    action: 'inscribir'
+  },
+
 
 
 

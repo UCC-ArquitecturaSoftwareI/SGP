@@ -32,24 +32,42 @@ module.exports = {
     // Really? Fetch all records and filter later? WTF, there must be a better way. Anyways we need this working soon.
     var inscripciones = await Inscripcion.find().populate('curso').populate('persona');
 
-    var filtered = inscripciones.filter(i => i.curso.id.toString() === cursoId);
+    var filtered = inscripciones.filter(i => i.curso.id.toString() === cursoId && i.baja === false);
 
     res.view('pages/inscripcion/inscripcionPersona.ejs', { curso: filtered[0].curso, inscripciones: filtered });
   },
 
 
-  personaCurso: async function(req, res) {
+  inscribir: async function(req, res) {
 
-    let person = req.allParams();
+    let param = req.allParams();
+    let personaId = param.personaId;
+    let cursoId = param.cursoId;
 
-    Inscripcion.create({
-      persona: '',
-      curso:'',
-    });
+    let inscripcion = await Inscripcion.find({persona: personaId, curso: cursoId});
+
+    if(inscripcion.length > 0) {
+      let updateResult = await Inscripcion.update({ id: inscripcion[0].id}).set( {baja: false} );
+    } else {
+
+      Inscripcion.create({
+        persona: param.personaId,
+        curso: param.cursoId,
+        baja: false
+      });
+    }
 
     return res.ok();
-  }
+  },
 
+
+  removerAlumno: async function(req, res) {
+    var param = req.allParams();
+
+    var result = await Inscripcion.update( { id: param.inscripcionId } ).set( { baja: true} );
+
+    res.ok();
+  }
 
 
 

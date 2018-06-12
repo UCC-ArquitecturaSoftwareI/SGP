@@ -9,6 +9,7 @@ async function buscarCurso() {
 
     let res = await fetch('/inscripcion/buscar', {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({nombre: txtbox.value}), // data can be `string` or {object}!
       headers: {
         'Content-Type': 'application/json'
@@ -43,9 +44,10 @@ async function encontrarPersona(cursoID) {
 
     let res = await fetch('/persona/buscar', {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({dato: txtbox.value}), // data can be `string` or {object}!
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     });
     let json = await res.json();
@@ -85,7 +87,19 @@ async function encontrarPersona(cursoID) {
 
 async function inscribirPersona(persona, curso) {
 
-  console.log(persona);
-  console.log(curso);
+  let res = await fetch('/inscripcion/inscribir', {
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify( {cursoId: curso, personaId: persona} ), // data can be `string` or {object}!
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+
+  if(res.status === 200 ) {
+    // Refresh after successful removal
+    location.reload();
+
+  }
 
 }
