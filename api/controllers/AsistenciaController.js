@@ -1,15 +1,31 @@
 /**
- * PersonaController
- *
- * @description :: Server-side actions for handling incoming requests.
- * @help        :: See https://sailsjs.com/docs/concepts/actions
+ * AsistenciaController
+ * @type {{verAsistencia: module.exports.verAsistencia, lista: module.exports.lista, curso: module.exports.curso}}
  */
-
 module.exports = {
 
   verAsistencia: async function (req, res){
 
-    res.view('pages/asistencia/verAsistencia');
+    var course = await Curso.findOne({id:req.param('id')}).populate('inscriptos');
+    console.log(course);
+    var personas = [];
+    for (var inscripcion of course.inscriptos){
+      personas.push(
+        await inscripcion.persona
+      )
+    }
+    var people = [];
+    for (var i=0; i<personas.length; i++) {
+      var temp = personas[i];
+      people.push(
+        await Persona.findOne({id:temp})
+      )
+    }
+
+    console.log(people);
+
+
+    res.view('pages/asistencia/verAsistencia', {asist: people});
   },
 
   lista: async function (req, res){
