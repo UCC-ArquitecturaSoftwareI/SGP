@@ -1,4 +1,4 @@
-async function buscarPersonaBautismo() {
+async function buscarPersonaBautismo(arreglo) {
   let txtbox = document.querySelector('input[name=\'buscador\']');
 
   if (txtbox.value.length >= 3) {
@@ -23,6 +23,7 @@ async function buscarPersonaBautismo() {
         '<td><div class="form-check">' +
         '<input class="form-check-input" type="checkbox" value="" name="checkbox/'+dato.id+'" id="checkbox/'+dato.id+'">' +
         '</div></td>' +
+        '<td><div onclick="'+arreglo.push(dato.id)+'" class="btn btn-primary" id="agregar/'+dato.id+'"><i class="fas fa-plus-square"></i></div></td>' +
         '<td>'+dato.nombre+'</td>' +
         '<td>'+dato.apellido+'</td>' +
         '<td>'+dato.dni+'</td>' +
@@ -51,6 +52,7 @@ async function buscarPersonaBautismo() {
         '<td><div class="form-check">' +
         '<input class="form-check-input" type="checkbox" name="checkbox/'+dato.id+'" id="checkbox/'+dato.id+'">' +
         '</div></td>' +
+        '<td><div onclick="'+arreglo.push(dato.id)+'" class="btn btn-primary" id="agregar/'+dato.id+'"><i class="fas fa-plus-square"></i></div></td>' +
         '<td>'+dato.nombre+'</td>' +
         '<td>'+dato.apellido+'</td>' +
         '<td>'+dato.dni+'</td>' +

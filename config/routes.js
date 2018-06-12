@@ -116,10 +116,12 @@ module.exports.routes = {
     controller: 'TurnoBautismoController',
     action: 'ver'
   },
+  /*
   'POST /addBautismo': {
     controller: 'TurnoBautismoController',
     action: 'agregar',
   },
+  */
   '/bautismos/eliminar/:id': {
     controller: 'TurnoBautismoController',
     action: 'eliminar',
