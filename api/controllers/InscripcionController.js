@@ -29,7 +29,8 @@ module.exports = {
     console.log(req.allParams());
     var cursoId = req.param('cursoId', '-1');
 
-    var tamanoCurso = 3;
+
+    var curso = await Curso.find({ id: cursoId});
 
 
     // Really? Fetch all records and filter later? WTF, there must be a better way. Anyways we need this working soon.
@@ -38,13 +39,17 @@ module.exports = {
     var inscriptos = inscripcionesFull.filter(i => i.curso.id.toString() === cursoId && i.baja === false); //.slice(0,tamanoCurso - 1);
     var enespera = null;
 
+    var tamanoCurso = curso.cupoCurso;
+    // tamanoCurso = 3;
+
+
     if(inscriptos.length > tamanoCurso) {
       enespera = inscriptos.slice(tamanoCurso, inscriptos.length);
       inscriptos = inscriptos.slice(0, tamanoCurso);
     }
 
 
-    res.view('pages/inscripcion/inscripcionPersona.ejs', { curso: inscriptos[0].curso, inscriptos: inscriptos, enespera:  enespera});
+    res.view('pages/inscripcion/inscripcionPersona.ejs', { curso: curso, inscriptos: inscriptos, enespera:  enespera});
   },
 
 
