@@ -1,11 +1,23 @@
+<%if(typeof arreglo === 'undefined')%>
+<%var arreglo = [];%>
+
 <div class="container">
   <form method="post" action="/addBautismo">
     <div class="form-group">
       <label for="inputpadrino">Padrino(s) y Madrina(s)</label>
       <div class="form-row">
-        <div class="col-10">
+        <div class="col-auto">
           <button type="button" class="btn btn-light" data-toggle="modal" data-target="#ModalPadrino">
             Seleccionar Padrinos y madrinas</button>
+        </div>
+        <div class="col-auto">
+          <%if(typeof arreglo != 'undefined') {%>
+          <li>
+            <ul>
+              <%= arreglo[0]; %>
+            </ul>
+          </li>
+          <%}%>
         </div>
         <div class="col-auto">
           <a class="btn btn-primary" href="/persona/formulario/0" role="button">Nueva Persona</a>
@@ -52,7 +64,7 @@
             <div class="form-group col-md-9">
               <label for="nombre">Buscar</label>
               <input class="form-control mr-sm-2" type="search" placeholder="Buscar persona por nombre o DNI"
-                     aria-label="Search" name="buscador" onkeyup="buscarPersonaBautismo()" size="40">
+                     aria-label="Search" name="buscador" onkeyup="buscarPersonaBautismo(arreglo)" size="40">
             </div>
           </div>
         </form>
@@ -60,7 +72,7 @@
           <table id="personas" class="table table-striped table-hover" style="width: 50%; margin:auto;">
             <thead>
             <tr>
-              <th>Selección</th>
+              <th>Agregar</th>
               <th>Nombre</th>
               <th>Apellido</th>
               <th>DNI</th>
@@ -69,10 +81,9 @@
             <tbody id="tabla">
             <% for(var i = 0; i < persona.length ; i++){ %>
             <tr>
-              <td><div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" name="checkbox/<%=persona[i].id%>"
-                         id="checkbox/<%=persona[i].id%>">
-                </div></td>
+              <td>
+                <div onclick="arreglo.push(persona[i].id)" class="btn btn-primary" id="agregar/<%= persona[i].id %>"><i class="fas fa-plus-square"></i></div>
+              </td>
               <td><%= persona[i].nombre %></td>
               <td><%= persona[i].apellido %></td>
               <td><%= persona[i].dni %></td>
