@@ -79,7 +79,7 @@ async function encontrarPersona(cursoID) {
 
       if(!inscriptojson[0] /* || inscriptojson[inscriptojson.length - 1].baja */){
 
-      t.innerHTML += '<tr>' +
+        t.innerHTML += '<tr>' +
         '<td>'+dato.nombre+'</td>' +
         '<td>'+dato.apellido+'</td>' +
         '<td>'+dato.dni+'</td>' +

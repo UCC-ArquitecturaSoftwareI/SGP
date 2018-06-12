@@ -60,11 +60,11 @@ module.exports = {
       let updateResult = await Inscripcion.update({ id: inscripcion[0].id}).set( {baja: false} );
     } else {
 
-      Inscripcion.create({
+      var resultCreate = await Inscripcion.create({
         persona: param.personaId,
         curso: param.cursoId,
         baja: false
-      });
+      }).fetch();
     }
 
     return res.ok();
