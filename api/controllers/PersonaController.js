@@ -16,9 +16,14 @@ module.exports = {
       direccion: param.direccion,
     };
 
-    datos = await Persona.create(nuevapersona);
+    datos = await Persona.create(nuevapersona).exec((err, valores) => {
+      if (err){
+        res.serverError();
+      } else {
+        res.redirect('/persona/lista');
+      }
+    });
 
-    res.redirect('/persona/lista');
   },
   modificar: async function (req, res) {
     var param = req.allParams();
