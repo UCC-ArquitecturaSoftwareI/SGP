@@ -61,7 +61,14 @@ module.exports = {
   },
 
   beforeCreate: function (valores,siguiente) {
-    if (!/^([0-9])*$/.test(valores.dni) ){
+    if (!/^([0-9])*$/.test(valores.dni)){
+      return siguiente({err: ['error']},null);
+    }
+    return siguiente(null,valores);
+  },
+
+  beforeUpdate: function (valores,siguiente) {
+    if (!/^([0-9])*$/.test(valores.dni)){
       return siguiente({err: ['error']},null);
     }
     return siguiente(null,valores);
