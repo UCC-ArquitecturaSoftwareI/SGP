@@ -1,31 +1,36 @@
 let retardo;
 
-async function buscarPersona() {
+async function buscarPersona(){
+  let txtbox = document.querySelector('input[name=\'buscador\']');
+  let res;
+
+  if (txtbox.value.length >= 3) {
+
+    res = await fetch('/persona/buscar', {
+      method: 'POST',
+      body: JSON.stringify({dato: txtbox.value}), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  } else {
+    res = await fetch('/persona/buscar', {
+      method: 'POST',
+      body: JSON.stringify({dato: ''}), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+  }
+  return await res.json();
+}
+
+async function actualizarLista() {
   clearTimeout(retardo);
   retardo = await setTimeout(async () => {
-    let txtbox = document.querySelector('input[name=\'buscador\']');
-    let res;
 
-    if (txtbox.value.length >= 3) {
-
-      res = await fetch('/persona/buscar', {
-        method: 'POST',
-        body: JSON.stringify({dato: txtbox.value}), // data can be `string` or {object}!
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-    } else {
-      res = await fetch('/persona/buscar', {
-        method: 'POST',
-        body: JSON.stringify({dato: ''}), // data can be `string` or {object}!
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-    }
-    let json = await res.json();
+    let json = await buscarPersona();
 
     let t = document.getElementById('tabla');
 
