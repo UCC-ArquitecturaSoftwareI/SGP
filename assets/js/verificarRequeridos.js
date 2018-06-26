@@ -9,7 +9,12 @@
           event.preventDefault();
           event.stopPropagation();
         }
-        form.classList.add('was-validated');
+        //pinta todos los campos de rojo o verde segun corresponda:
+        let formGroup = document.getElementsByClassName('form-group');
+        for (let i = 0; i < formGroup.length; i++){
+          formGroup[i].classList.add('was-validated');
+        }
+        //
       }, false);
     });
   }, false);
