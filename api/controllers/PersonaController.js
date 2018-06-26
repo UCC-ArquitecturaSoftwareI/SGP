@@ -35,9 +35,13 @@ module.exports = {
       direccion: param.direccion,
     };
 
-    datos = await Persona.update({id: param.id},nuevapersona);
-
-    res.redirect('/persona/lista');
+    datos = await Persona.update({id: param.id},nuevapersona).exec((err, valores) => {
+      if (err){
+        res.serverError();
+      } else {
+        res.redirect('/persona/lista');
+      }
+    });
   },
   eliminar: async function (req, res) {
     //await Persona.destroy({id: req.allParams().id});
