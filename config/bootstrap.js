@@ -88,7 +88,7 @@ module.exports.bootstrap = async function (done) {
       {
         fechaInicio: 1533092400000, // Agosto 1, 2018
         fechaFin: 1535760000000, // Septiembre 1, 2018
-        diasDeCursos: [1, 3, 5], // Domingo es 0, lunes es 1, y así...
+        dias: [1, 3, 5], // Domingo es 0, lunes es 1, y así...
         horaInicio: 17,  // 0 a 23
         horaFin: 19,
         nombre: 'Electricidad',

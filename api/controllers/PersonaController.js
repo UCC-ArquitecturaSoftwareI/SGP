@@ -16,9 +16,14 @@ module.exports = {
       direccion: param.direccion,
     };
 
-    datos = await Persona.create(nuevapersona);
+    datos = await Persona.create(nuevapersona).exec((err, valores) => {
+      if (err){
+        res.serverError();
+      } else {
+        res.redirect('/persona/lista');
+      }
+    });
 
-    res.redirect('/persona/lista');
   },
   modificar: async function (req, res) {
     var param = req.allParams();
@@ -30,9 +35,13 @@ module.exports = {
       direccion: param.direccion,
     };
 
-    datos = await Persona.update({id: param.id},nuevapersona);
-
-    res.redirect('/persona/lista');
+    datos = await Persona.update({id: param.id},nuevapersona).exec((err, valores) => {
+      if (err){
+        res.serverError();
+      } else {
+        res.redirect('/persona/lista');
+      }
+    });
   },
   eliminar: async function (req, res) {
     //await Persona.destroy({id: req.allParams().id});

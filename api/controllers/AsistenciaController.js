@@ -12,14 +12,14 @@ module.exports = {
     for (var inscripcion of course.inscriptos){
       personas.push(
         await inscripcion.persona
-      )
+      );
     }
     var people = [];
     for (var i=0; i<personas.length; i++) {
       var temp = personas[i];
       people.push(
         await Persona.findOne({id:temp})
-      )
+      );
     }
 
     console.log(people);
@@ -35,15 +35,15 @@ module.exports = {
     for (var inscripcion of course.inscriptos){
       personas.push(
         await inscripcion.persona
-      )
+      );
     }
     var people = [];
     for (var i=0; i<personas.length; i++) {
-        var temp = personas[i];
-        people.push(
+      var temp = personas[i];
+      people.push(
           await Persona.findOne({id:temp})
-        )
-      }
+      );
+    }
 
     console.log(people);
 
