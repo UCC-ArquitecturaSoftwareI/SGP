@@ -5,10 +5,6 @@
 
 module.exports = {
 
-  marcarAsist: async function (req, res){
-
-  },
-
   verAsistencia: async function (req, res){
 
     var course = await Curso.findOne({id:req.param('id')}).populate('inscriptos');
@@ -23,7 +19,7 @@ module.exports = {
     for (var i=0; i<personas.length; i++){
       var tot = await Asistencia.count({persona:personas[i], curso:idCurso});
       var real = await Asistencia.count({personas:personas[i],curso:idCurso, asistio: true});
-      var perc = (tot/real*100);
+      var perc = (real/tot*100);
 
       console.log(perc);
 

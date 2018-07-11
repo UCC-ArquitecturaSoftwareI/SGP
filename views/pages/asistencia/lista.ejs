@@ -7,6 +7,7 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Asistencia</th>
+    <th>Editar</th>
   </tr>
   </thead>
   <tbody id="table">
@@ -15,8 +16,12 @@
     <td><%= pers[i].nombre %></td>
     <td><%= pers[i].apellido %></td>
     <td>
-        <input onclick="" type="checkbox">
-
+        <input onclick="marcarAsistencia(pers[i].id)" type = "checkbox">
+    </td>
+    <td>
+      <a class = "btn btn-outline-primary">
+        <i class="fas fa-pencil-alt"></i>
+      </a>
     </td>
   </tr>
   <% } %>
