@@ -209,4 +209,9 @@ module.exports.routes = {
     action: 'lista',
   },
 
+  '/asistencia/verAsistencia/:id':{
+    controller:'AsistenciaController',
+    action: 'verAsistencia',
+  },
+
 };
