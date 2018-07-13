@@ -14,24 +14,26 @@ module.exports = {
         await inscripcion.persona
       )
     }
-    var idCurso = await Curso.findOne({id:req.param('id')}).populate('docencia');
+    console.log(personas);
+    var idCurso = await Curso.findOne({docencia:req.param('id')});
     var asistencia = [];
     for (var i=0; i<personas.length; i++){
       var tot = await Asistencia.count({persona:personas[i], curso:idCurso});
-      var real = await Asistencia.count({personas:personas[i],curso:idCurso, asistio: true});
-      var perc = (real/tot*100);
-
+      var real = await Asistencia.count({persona:personas[i],curso:idCurso, asistio: true});
+      var perc = ((real*100)/tot);
+      console.log(tot);
+      console.log(real);
       console.log(perc);
 
-      var asistencia = {
-        nombre: await Persona.findOne({id:personas[i]}).populate('nombre'),
-        apellido: await Persona.findOne({id:personas[i]}).populate('apellido'),
-        porcentaje: perc
-      }
-
-
+      var tmp = personas[i];
+      asistencia.push(
+        nombre = await Persona.findOne({tmp:req.param('nombre')}),
+        apellido = await Persona.findOne({tmp:req.param('apellido')}),
+        porcentaje = perc
+    )
     }
 
+    console.log(asistencia);
 
     res.view('pages/asistencia/verAsistencia', {asist: asistencia});
   },
