@@ -3,3 +3,7 @@ async function marcarAsistencia(persID) {
   pers.asistio = true;
 
 }
+
+$('#alumno tbody tr').click(function() {
+    $(this).addClass('bg-success');
+});
