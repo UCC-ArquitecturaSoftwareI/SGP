@@ -49,7 +49,7 @@
       </a>
     </td>
     <td>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#removeStudentModal"
+      <button type="button" class="btn-danger btn" data-toggle="modal" data-target="#removeStudentModal"
               data-alumno-nombre="<%=inscriptos[i].persona.dni + ', ' + inscriptos[i].persona.apellido + ', ' + inscriptos[i].persona.nombre%>"
               data-alumno-id="<%=inscriptos[i].persona.id%>"
               data-curso-id="<%=inscriptos[i].curso.id%>"
@@ -89,7 +89,7 @@
       </a>
     </td>
     <td>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#removeStudentModal"
+      <button type="button" class="btn-danger btn" data-toggle="modal" data-target="#removeStudentModal"
               data-alumno-nombre="<%=enespera[i].persona.dni + ', ' + enespera[i].persona.apellido + ', ' + enespera[i].persona.nombre%>"
               data-alumno-id="<%=enespera[i].persona.id%>"
               data-curso-id="<%=enespera[i].curso.id%>"
@@ -120,7 +120,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button id="botonRemover" type="button" class="btn btn-primary">Remover</button>
+        <button id="botonRemover" type="button" class="btn-danger btn">Remover</button>
       </div>
     </div>
   </div>
