@@ -197,11 +197,6 @@ module.exports.routes = {
     action: 'mostrarInscriptos'
   },
 
-  'GET /inscripcion/inscribirPersonas/:cursoId': {
-    controller: 'InscripcionController',
-    action: 'inscribirPersonas'
-  },
-
 
 
 

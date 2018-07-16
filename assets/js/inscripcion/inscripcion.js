@@ -53,7 +53,7 @@ async function encontrarPersona(cursoID) {
         'Content-Type': 'application/json',
       }
     });
-    let personasEncontradas = await res.json();
+    let personasJson = await res.json();
 
     let inscriptos =  await fetch('/inscripcion/Inscriptos', {
       method: 'POST',
@@ -64,10 +64,13 @@ async function encontrarPersona(cursoID) {
       }
     });
     let inscriptosJson = await inscriptos.json();
+    let inscriptosIds = inscriptosJson.map(inscripto => inscripto.id);
+
+    let personasNoInscriptas = personasJson.filter(persona => !inscriptosIds.includes(persona.id));
 
     var tempInner =  '<div class="row">';
 
-    for( let persona of personasEncontradas){
+    for( let persona of personasNoInscriptas){
       if(!inscriptosJson.includes(persona)) {
         tempInner += generateCard(persona, cursoID);
       }

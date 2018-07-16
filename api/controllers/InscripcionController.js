@@ -56,13 +56,6 @@ module.exports = {
     res.view('pages/inscripcion/listaInscriptos.ejs', { curso: curso, inscriptos: inscriptos, enespera:  enespera});
   },
 
-  inscribirPersonas: async function(req, res) {
-    var cursoId = req.param('cursoId', '-1');
-
-    res.view('pages/inscripcion/inscribirPersonas.ejs', { cursoId: cursoId});
-
-  },
-
   inscribir: async function(req, res) {
 
     let param = req.allParams();
