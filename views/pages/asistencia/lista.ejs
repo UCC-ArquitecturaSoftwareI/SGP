@@ -12,10 +12,10 @@
   <tbody id="table">
   <% for(var i=0; i<pers.length; i++){ %>
   <tr>
-    <td><%= pers[i].nombre %></td>
-    <td><%= pers[i].apellido %></td>
+    <td id="p1"><%= pers[i].nombre %></td>
+    <td id="p1"><%= pers[i].apellido %></td>
     <td>
-      <a href="#" class = "btn btn-outline-dark">
+      <a href="#" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalEditar">
         <i class="fas fa-pencil-alt"></i>
       </a>
     </td>
@@ -23,3 +23,25 @@
   <% } %>
   </tbody>
 </table>
+
+
+<!--Ventana emergente (Modal)-->
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalCentrado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalCentrado">Detalle de Asistencia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        Informacion del alumno
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

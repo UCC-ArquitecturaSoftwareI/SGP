@@ -21,15 +21,12 @@ module.exports = {
       var tot = await Asistencia.count({persona:personas[i], curso:idCurso});
       var real = await Asistencia.count({persona:personas[i],curso:idCurso, asistio: true});
       var perc = ((real*100)/tot);
-      console.log(tot);
-      console.log(real);
-      console.log(perc);
 
       var tmp = personas[i];
       asistencia.push(
-        nombre = await Persona.findOne({tmp:req.param('nombre')}),
-        apellido = await Persona.findOne({tmp:req.param('apellido')}),
-        porcentaje = perc
+        nombre = await Persona.findOne({id:req.param('tmp')}),
+        apellido = await Persona.findOne({id:req.param('tmp')}),
+        porcentaje = perc,
     )
     }
 
