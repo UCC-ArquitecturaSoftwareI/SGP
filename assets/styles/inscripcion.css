@@ -1,0 +1,8 @@
+.row-g {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-g > div[class*='col-'] {
+  display: flex;
+}

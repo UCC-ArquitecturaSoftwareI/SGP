@@ -24,8 +24,8 @@ async function buscarCurso() {
     t.innerHTML = '';
     for( let dato of json){
       t.innerHTML += '<tr>' +
-        '<td>'+dato.nombreDelCurso+'</td>' +
-        '<td>'+dato.descripcionCurso+'</td>' +
+        '<td>'+dato.nombre+'</td>' +
+        '<td>'+dato.descripcion+'</td>' +
         '<td>      <a href="/inscripcion/cursoDetalle/' + dato.id + '" class="btn-info btn">\n' +
         '        <i class="fas fa-pencil-alt"></i>\n' +
         '      </a></td>' +
@@ -34,13 +34,16 @@ async function buscarCurso() {
   }
 }
 
+
 async function encontrarPersona(cursoID) {
 
-
+  let deckPersonasBuscadas = document.getElementById('resultadoPersonas');
 
   let txtbox = document.querySelector('input[name=\'buscador\']');
 
-  if (txtbox.value.length >= 3) {
+  if(txtbox.value.length < 3) {
+    deckPersonasBuscadas.innerHTML = '';
+  } else {
 
     let res = await fetch('/persona/buscar', {
       method: 'POST',
@@ -50,60 +53,42 @@ async function encontrarPersona(cursoID) {
         'Content-Type': 'application/json',
       }
     });
-    let json = await res.json();
+    let personasEncontradas = await res.json();
 
-    console.log(json);
+    let inscriptos =  await fetch('/inscripcion/Inscriptos', {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify( {curso: cursoID} ), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    let inscriptosJson = await inscriptos.json();
 
-    let t = document.getElementById('tablaBusqueda');
+    var tempInner = '<div class="row-g">';
 
-    t.innerHTML = '';
-    for( let dato of json){
-
-      // let ides = new Object();
-      // ides.persona = dato.id;
-      // ides.curso = cursoID;
-
-      // console.log(ides);
-
-      let inscripto =  await fetch('/inscripcion/Inscriptos', {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify( {curso: cursoID, persona: dato.id} ), // data can be `string` or {object}!
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      let inscriptojson = await inscripto.json();
-
-      console.log(inscriptojson);
-
-      if(!inscriptojson[0]  || ( inscripto !== null && inscriptojson[0].baja )){
-
-        t.innerHTML += '<tr>' +
-        '<td>'+dato.nombre+'</td>' +
-        '<td>'+dato.apellido+'</td>' +
-        '<td>'+dato.dni+'</td>' +
-        '<td>'+dato.correo+'</td>' +
-        '<td>'+dato.direccion+'</td>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</td>' +
-        '<td>' +
-        '<a href="/formulario/<%= persona[i].id%>" class="btn-info btn">' +
-        '<i class="fas fa-eye"></i>' +
-        '</a>' +
-        '<button onclick="inscribirPersona(' + dato.id + ',' + cursoID + ')"' +
-        'class="btn-info btn">' +
-        '<i class=" fas fa-plus-circle"></i>' +
-        '</button> '+
-
-        '</td>' +
-        '</tr>';
+    for( let persona of personasEncontradas){
+      if(!inscriptosJson.includes(persona)) {
+        tempInner += generateCard(persona, cursoID);
       }
     }
+    tempInner +='</div>';
+    deckPersonasBuscadas.innerHTML = tempInner;
+
   }
+}
+
+function generateCard(persona) {
+
+  var result = ' <div class="col-sm-3">' +
+    '<div class="card border-secondary mb-3">' +
+    '<div class="card-body">' +
+    '<h5 class="card-title">' + persona.apellido + ', ' + persona.nombre + '</h5>' +
+    '<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>' +
+    '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>'+
+    '</div></div></div>';
+
+  return result;
 }
 
 async function inscribirPersona(persona, curso) {

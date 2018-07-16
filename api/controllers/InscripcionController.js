@@ -17,7 +17,7 @@ module.exports = {
     var cursos = await Curso.find(
 
       // or: [
-      {nombreDelCurso: {contains: req.allParams().nombre}}
+      {nombre: {contains: req.allParams().nombre}}
       // ]
     );
 
@@ -30,7 +30,7 @@ module.exports = {
     var cursoId = req.param('cursoId', '-1');
 
 
-    var curso = await Curso.find({ id: cursoId});
+    var curso = await Curso.findOne({ id: cursoId});
 
 
     // Really? Fetch all records and filter later? WTF, there must be a better way. Anyways we need this working soon.
@@ -92,14 +92,14 @@ module.exports = {
   buscarInscriptos: async function (req, res) {
 
     let param = req.allParams();
-    let personaId = param.persona;
     let cursoId = param.curso;
 
-    console.log('Este ID llega a buscarInscriptos ' + personaId);
-    console.log('Este ID llega a buscarInscriptos ' + cursoId);
+    var inscripciones = await Inscripcion.find({curso: cursoId}).populate('persona');
 
+    // filtramos y eliminamos inscripciones no validas...
+    inscripciones = inscripciones.filter(curso => curso.baja === false && curso.persona.borrada === false);
+    var inscriptos = inscripciones.map(inscripcion => inscripcion.persona);
 
-    var inscriptos = await Inscripcion.find({persona: personaId, curso: cursoId});
     res.json(inscriptos);
   },
 
