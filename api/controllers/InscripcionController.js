@@ -44,8 +44,7 @@ module.exports = {
 
     var enespera = null;
 
-    var tamanoCurso = curso.cupoCurso;
-    // tamanoCurso = 3;
+    var tamanoCurso = curso.cupo;
 
 
     if(inscriptos.length > tamanoCurso) {
@@ -54,9 +53,15 @@ module.exports = {
     }
 
 
-    res.view('pages/inscripcion/inscripcionPersona.ejs', { curso: curso, inscriptos: inscriptos, enespera:  enespera});
+    res.view('pages/inscripcion/listaInscriptos.ejs', { curso: curso, inscriptos: inscriptos, enespera:  enespera});
   },
 
+  inscribirPersonas: async function(req, res) {
+    var cursoId = req.param('cursoId', '-1');
+
+    res.view('pages/inscripcion/inscribirPersonas.ejs', { cursoId: cursoId});
+
+  },
 
   inscribir: async function(req, res) {
 
@@ -89,7 +94,7 @@ module.exports = {
     res.ok();
   },
 
-  buscarInscriptos: async function (req, res) {
+  mostrarInscriptos: async function (req, res) {
 
     let param = req.allParams();
     let cursoId = param.curso;

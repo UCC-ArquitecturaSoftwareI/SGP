@@ -194,8 +194,14 @@ module.exports.routes = {
 
   'POST /inscripcion/Inscriptos' : {
     controller: 'InscripcionController',
-    action: 'buscarInscriptos'
+    action: 'mostrarInscriptos'
   },
+
+  'GET /inscripcion/inscribirPersonas/:cursoId': {
+    controller: 'InscripcionController',
+    action: 'inscribirPersonas'
+  },
+
 
 
 

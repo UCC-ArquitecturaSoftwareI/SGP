@@ -65,7 +65,7 @@ async function encontrarPersona(cursoID) {
     });
     let inscriptosJson = await inscriptos.json();
 
-    var tempInner = '<div class="row-g">';
+    var tempInner =  '<div class="row">';
 
     for( let persona of personasEncontradas){
       if(!inscriptosJson.includes(persona)) {
@@ -78,20 +78,25 @@ async function encontrarPersona(cursoID) {
   }
 }
 
-function generateCard(persona) {
+function generateCard(persona, cursoID) {
 
-  var result = ' <div class="col-sm-3">' +
+  var result = '<div class="col-sm-4">' +
     '<div class="card border-secondary mb-3">' +
     '<div class="card-body">' +
-    '<h5 class="card-title">' + persona.apellido + ', ' + persona.nombre + '</h5>' +
-    '<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>' +
+    '<h5 class="card-title">' + persona.dni + '</h5>' +
+    '<p class="card-text">Apellido: ' + persona.apellido + '</p>' +
+    '<p class="card-text"><b>Nombre:</b> ' + persona.nombre + '</p>' +
+    '<button onclick="inscribirPersonaACurso(' + persona.id + ',' + cursoID + ')"' +
+    'class="btn-info btn" style="justify-content: center">' +
+    '<i class=" fas fa-plus-circle"></i>Agregar' +
+    '</button> '+
     '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>'+
     '</div></div></div>';
 
   return result;
 }
 
-async function inscribirPersona(persona, curso) {
+async function inscribirPersonaACurso(persona, curso) {
 
   let res = await fetch('/inscripcion/inscribir', {
     method: 'POST',
@@ -105,7 +110,6 @@ async function inscribirPersona(persona, curso) {
   if(res.status === 200 ) {
     // Refresh after successful removal
     location.reload();
-
   }
 
 }
