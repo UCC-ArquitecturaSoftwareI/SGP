@@ -16,9 +16,14 @@ module.exports = {
       direccion: param.direccion,
     };
 
-    datos = await Persona.create(nuevapersona);
-    var personas = await Persona.find({});
-    res.view('pages/personas/listasa', {persona: personas});
+    datos = await Persona.create(nuevapersona).exec((err, valores) => {
+      if (err){
+        res.serverError();
+      } else {
+        res.redirect('/persona/lista');
+      }
+    });
+
   },
   modificar: async function (req, res) {
     var param = req.allParams();
@@ -30,13 +35,19 @@ module.exports = {
       direccion: param.direccion,
     };
 
-    datos = await Persona.update({id: param.id},nuevapersona);
-    var personas = await Persona.find({});
-    res.view('pages/personas/listasa', {persona: personas});
+    datos = await Persona.update({id: param.id},nuevapersona).exec((err, valores) => {
+      if (err){
+        res.serverError();
+      } else {
+        res.redirect('/persona/lista');
+      }
+    });
   },
   eliminar: async function (req, res) {
-    await Persona.destroy({id: req.allParams().id});
-    console.log(JSON.stringify(req.allParams()));
+    //await Persona.destroy({id: req.allParams().id});
+    let persona = await Persona.find({id: req.allParams().id});
+    persona[0].borrada = true;
+    await Persona.update({id: req.allParams().id},persona[0]);
     res.redirect('/persona/lista');
   },
   devolverFormulario: async function (req, res) {
@@ -48,7 +59,9 @@ module.exports = {
         apellido: null,
         dni: null,
         correo: null,
-        direccion: null
+        direccion: null,
+        act: 'agregar',
+        modalText: 'No se guardará la nueva persona',
       };
     } else {
       var sujeto = await Persona.find({id: req.allParams().id});
@@ -58,7 +71,9 @@ module.exports = {
         apellido: sujeto[0].apellido,
         dni: sujeto[0].dni,
         correo: sujeto[0].correo,
-        direccion: sujeto[0].direccion
+        direccion: sujeto[0].direccion,
+        act: 'modificar',
+        modalText: 'No se modificarán los datos de la persona',
       };
     }
     res.view('pages/personas/formulario', {persona: ret});
@@ -70,13 +85,13 @@ module.exports = {
           {nombre: {contains: req.allParams().dato}},
           {apellido: {contains: req.allParams().dato}},
           {dni: {contains: req.allParams().dato}},
-        ]
+        ],
+        borrada: false,
       });
-    console.log(req.allParams());
     res.json(personas);
   },
   lista: async function (req, res) {
-    var personas = await Persona.find({});
+    var personas = await Persona.find({borrada: false});
 
     res.view('pages/personas/listasa', {persona: personas});
   },

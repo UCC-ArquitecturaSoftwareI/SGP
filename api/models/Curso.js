@@ -9,37 +9,37 @@ module.exports = {
 
   attributes: {
 
-    fechaInicioCurso: {
+    fechaInicio: {
       type: 'number',
       required: true
     },
 
-    fechaFinCurso: {
+    fechaFin: {
       type: 'number',
       required: true
     },
 
-    diasDeCursos: {
+    dias: {
       type: 'json',
       required: true
     },
 
-    horaInicioCurso: {
+    horaInicio: {
       type: 'number',
       required: true
     },
 
-    horaFinCurso: {
+    horaFin: {
       type: 'number',
       required: true
     },
 
-    nombreDelCurso: {
+    nombre: {
       type: 'string',
       required: true
     },
 
-    descripcionCurso: {
+    descripcion: {
       type: 'string',
       required: true
     },
@@ -54,7 +54,7 @@ module.exports = {
       via: 'docencia',
     },
 
-    cupoCurso: {
+    cupo: {
       type: 'number',
       required: true
     },
@@ -65,5 +65,8 @@ module.exports = {
     },
 
   },
-
+  beforeCreate: function (valuesToSet, proceed) {
+    if (err) { return proceed('Ocurrio un error'); }
+    return proceed();
+  }
 };

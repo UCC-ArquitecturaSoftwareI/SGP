@@ -105,29 +105,50 @@ module.exports.routes = {
         ABM Bautismos (PUBG)
    */
   '/bautismos/add': {
-    view: 'pages/bautismos/addBautismo'
+    controller: 'TurnoBautismoController',
+    action: 'listarpersonas',
   },
   '/bautismos': {
-    view: 'pages/bautismos/bautismos'
+    controller: 'TurnoBautismoController',
+    action: 'list'
   },
-
+  '/bautismos/:id': {
+    controller: 'TurnoBautismoController',
+    action: 'ver'
+  },
+  /*
+  'POST /addBautismo': {
+    controller: 'TurnoBautismoController',
+    action: 'agregar',
+  },
+  */
+  '/bautismos/eliminar/:id': {
+    controller: 'TurnoBautismoController',
+    action: 'eliminar',
+  },
+  '/bautismos/buscar': 'TurnoBautismoController.buscarJSON',
+  '/bautismos/listar': 'TurnoBautismoController.listarJSON',
+  '/bautismos/listarpersonas': 'TurnoBautismoController.listarpersonasJSON',
   /*
         ABM Cursos (ABMCursos)
    */
+
 
   '/cursos/lista':{
     controller: 'CursoController',
     action: 'lista',
   },
+
   'POST /cursos/agregar': {
     controller: 'CursoController',
     action: 'agregar'
   },
-  '/cursos/formulario': {
+  '/cursos/formulario/:id': {
     controller: 'CursoController',
     action: 'formulario'
   },
-  '/cursos/modificar': {
+
+  'POST /cursos/modificar': {
     controller: 'CursoController',
     action: 'modificar'
   },
@@ -156,7 +177,26 @@ module.exports.routes = {
     action: 'buscarCurso'
   },
 
-  //'/inscripcion/buscar': 'InscripcionController.buscarCurso',
+  'GET /inscripcion/cursoDetalle/:cursoId': {
+    controller: 'InscripcionController',
+    action: 'cursoDetalle',
+  },
+
+  'POST /inscripcion/removerAlumno': {
+    controller: 'InscripcionController',
+    action: 'removerAlumno'
+  },
+
+  'POST /inscripcion/inscribir' : {
+    controller: 'InscripcionController',
+    action: 'inscribir'
+  },
+
+  'POST /inscripcion/Inscriptos' : {
+    controller: 'InscripcionController',
+    action: 'buscarInscriptos'
+  },
+
 
 
 

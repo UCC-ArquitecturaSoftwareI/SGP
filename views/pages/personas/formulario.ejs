@@ -1,33 +1,77 @@
-<%if (persona.id === null){%>
-<form action="/persona/agregar" method="post">
-<%} else {%>
-<form action="/persona/modificar" method="post">
-<%}%>
-  <div class="form-group">
+<form action="/persona/<%= persona.act %>" method="post" class="needs-validation" novalidate>
+  <div class="form-group" oninput="comprobar()" style="height: 70px; width: 50%; margin-left: 25%; margin-bottom: 30px">
     <label for="nombre">Nombre</label>
-    <input type="text" class="form-control" name="nombre" value="<%=persona.nombre%>">
+    <input type="text" class="form-control" name="nombre" id="nombre" value="<%= persona.nombre %>" required
+           pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+">
+    <div class="valid-feedback">
+    </div>
+    <p class="invalid-feedback" style="position: relative; top: -100%; left: 100px">
+      Nombre inválido
+    </p>
   </div>
-  <div class="form-group">
+  <div class="form-group" oninput="comprobar()" style="height: 70px; width: 50%; margin-left: 25%; margin-bottom: 30px">
     <label for="apellido">Apellido</label>
-    <input type="text" class="form-control" name="apellido" value="<%=persona.apellido%>">
+    <input type="text" class="form-control" name="apellido" id="apellido" value="<%= persona.apellido %>" required
+           pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+">
+    <div class="valid-feedback">
+    </div>
+    <div class="invalid-feedback" style="position: relative; bottom: 10px; top: -100%; left: 100px">
+      Apellido inválido
+    </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" oninput="comprobar()" style="height: 70px; width: 50%; margin-left: 25%; margin-bottom: 30px">
     <label for="dni">DNI</label>
-    <input type="text" class="form-control" name="dni" value="<%=persona.dni%>">
+    <input type="text" class="form-control" name="dni" id="dni" value="<%= persona.dni %>" required pattern="([0-9])*">
+    <div class="valid-feedback">
+    </div>
+    <div class="invalid-feedback" style="position: relative; top: -100%; left: 100px">
+      DNI inválido
+    </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" oninput="comprobar()" style="height: 70px; width: 50%; margin-left: 25%; margin-bottom: 30px">
     <label for="correo">Correo</label>
-    <input type="email" class="form-control" name="correo" value="<%=persona.correo%>">
+    <input type="email" class="form-control" name="correo" id="correo" value="<%= persona.correo %>" required>
+    <div class="valid-feedback">
+    </div>
+    <div class="invalid-feedback" style="position: relative; top: -100%; left: 100px">
+      Correo inválido
+    </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" oninput="comprobar()" style="height: 70px; width: 50%; margin-left: 25%; margin-bottom: 30px">
     <label for="direccion">Dirección</label>
-    <input type="text" class="form-control" name="direccion" value="<%=persona.direccion%>">
+    <input type="text" class="form-control" name="direccion" id="direccion" value="<%= persona.direccion %>" required>
+    <div class="valid-feedback">
+    </div>
+    <div class="invalid-feedback" style="position: relative; top: -100%; left: 100px; margin-bottom: 0">
+      Dirección inválida
+    </div>
   </div>
-  <input type="hidden" class="form-control" name="id" value="<%=persona.id%>">
-<% if (persona.id === null){%>
-  <input type="submit" class="btn btn-primary" value="Agregar">
+  <input type="hidden" class="form-control" name="id" value="<%= persona.id %>">
+  <div style="text-align: center; width: 100%; padding: 20px;">
+    <input type="submit" class="btn btn-primary" style="text-transform: capitalize"
+           value="<%= persona.act %>">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#confirmationModal">
+      Volver
+    </button>
+  </div>
+  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea volver?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p> <%= persona.modalText %></p>
+        </div>
+        <div class="modal-footer" style="">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <a href="javascript:history.back(1)" class="btn btn-primary">Volver</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
-  <%} else {%>
-  <input type="submit" class="btn btn-primary" value="Modificar">
-</form>
-<%}%>

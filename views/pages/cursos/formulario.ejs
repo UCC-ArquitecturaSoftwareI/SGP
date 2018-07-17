@@ -4,32 +4,32 @@
   <form action="/cursos/modificar" method="post">
     <% } %>
     <div class="form-group">
-      <label for="nombreDelCurso">Nombre Curso</label>
-      <input type="text" class="form-control" name="nombreDelCurso" value="<%= curso.nombreDelCurso %>">
+      <label for="nombre">Nombre Curso</label>
+      <input type="text" class="form-control" name="nombre" value="<%= curso.nombre %>">
     </div>
     <div class="form-group">
-      <label for="fechaInicioCurso">Fecha de Inicio Curso</label>
-      <input type="number" class="form-control" name="fechaInicioCurso" value="<%= curso.fechaInicioCurso %>">
+      <label for="fechaInicio">Fecha de Inicio Curso</label>
+      <input type="number" class="form-control" name="fechaInicio" value="<%= curso.fechaInicio %>">
     </div>
     <div class="form-group">
-      <label for="fechaFinCurso">Fecha Fin Curso</label>
-      <input type="number" class="form-control" name="fechaFinCurso" value="<%= curso.fechaFinCurso %>">
+      <label for="fechaFin">Fecha Fin Curso</label>
+      <input type="number" class="form-control" name="fechaFin" value="<%= curso.fechaFin %>">
     </div>
     <div class="form-group">
-      <label for="diasDeCursos">Dias De Cursos</label>
-      <input type="text" class="form-control" name="diasDeCursos" value="<%= curso.diasDeCursos %>">
+      <label for="dias">Dias De Cursos</label>
+      <input type="text" class="form-control" name="dias" value="<%= curso.dias %>">
     </div>
     <div class="form-group">
-      <label for="horaInicioCurso">Hora Inicio Curso</label>
-      <input type="number" class="form-control" name="horaInicioCurso" value="<%= curso.horaInicioCurso %>">
+      <label for="horaInicio">Hora Inicio Curso</label>
+      <input type="number" class="form-control" name="horaInicio" value="<%= curso.horaInicio %>">
     </div>
     <div class="form-group">
-      <label for="horaFinCurso">Hora Fin Cursos</label>
-      <input type="number" class="form-control" name="horaFinCurso" value="<%= curso.horaFinCurso %>">
+      <label for="horaFin">Hora Fin Cursos</label>
+      <input type="number" class="form-control" name="horaFin" value="<%= curso.horaFin %>">
     </div>
     <div class="form-group">
-      <label for="descripcionCurso">Descripcion del Curso</label>
-      <input type="text" class="form-control" name="descripcionCurso" value="<%= curso.descripcionCurso %>">
+      <label for="descripcion">Descripcion del Curso</label>
+      <input type="text" class="form-control" name="descripcion" value="<%= curso.descripcion %>">
     </div>
     <div class="form-group">
       <label for="aula">Aula</label>
@@ -37,7 +37,7 @@
     </div>
     <div class="form-group">
       <label for="CupoCursos">Cupos del Cursos</label>
-      <input type="number" class="form-control" name="CupoCursos" value="<%= curso.CupoCursos %>">
+      <input type="number" class="form-control" name="Cupo" value="<%= curso.Cupo %>">
     </div>
 
     <% if (curso.nombreDelCurso == null){ %>

@@ -1,13 +1,26 @@
+<%if(typeof arreglo === 'undefined')%>
+<%var arreglo = [];%>
+
 <div class="container">
-  <form method="post" action="/addBautismo" >
+  <form method="post" action="/addBautismo">
     <div class="form-group">
-      <label for="inputpadrino">Padrin@s</label>
+      <label for="inputpadrino">Padrino(s) y Madrina(s)</label>
       <div class="form-row">
-        <div class="col-11">
-          <input name="padrino" class="form-control" id="inputpadrino" type="text" placeholder="Busqueda de padrino/madrina">
+        <div class="col-auto">
+          <button type="button" class="btn btn-light" data-toggle="modal" data-target="#ModalPadrino">
+            Seleccionar Padrinos y madrinas</button>
         </div>
         <div class="col-auto">
-          <a data-toggle="modal" href="#ModalPadrino" style="color:rgba(0,123,255,1.0)"><i class="fas fa-plus-square fa-2x"></i></a>
+          <%if(typeof arreglo != 'undefined') {%>
+          <li>
+            <ul>
+              <%= arreglo[0]; %>
+            </ul>
+          </li>
+          <%}%>
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-primary" href="/persona/formulario/0" role="button">Nueva Persona</a>
         </div>
       </div>
     </div>
@@ -35,39 +48,49 @@
 
 
 <!-- Modal Padrinos-->
-<div class="modal fade" id="ModalPadrino" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="ModalPadrino" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Agregar nuevo padrino/madrina</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Seleccionar padrinos y madrinas</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form style="width: 50%; margin:auto;">
           <div class="form-row">
-            <div class="form-group col-md">
-              <label for="inputnombrep">Nombre</label>
-              <input type="text" class="form-control" id="inputnombrep" placeholder="Nombre" name="nombrep">
-            </div>
-            <div class="form-group col-md">
-              <label for="inputapellidop">Apellido</label>
-              <input type="text" class="form-control" id="inputapellidop" placeholder="Apellido" name="apellidop">
-            </div>
-            <div class="form-group col-md-auto">
-              <label for="inputdnip">DNI</label>
-              <input type="text" class="form-control" id="inputdnip" placeholder="DNI" name="dnip">
+            <div class="form-group col-md-9">
+              <label for="nombre">Buscar</label>
+              <input class="form-control mr-sm-2" type="search" placeholder="Buscar persona por nombre o DNI"
+                     aria-label="Search" name="buscador" onkeyup="buscarPersonaBautismo(arreglo)" size="40">
             </div>
           </div>
-          <div class="form-group">
-            <label for="inputcorreop">Correo electronico</label>
-            <input type="email" class="form-control" id="inputcorreop" placeholder="Email" name="correop">
-          </div>
-          <div class="form-group">
-            <label for="inputdireccionp">Direccion</label>
-            <input type="text" class="form-control" id="inputdireccionp" placeholder="Direccion" name="direccionp">
-          </div>
+        </form>
+        <form>
+          <table id="personas" class="table table-striped table-hover" style="width: 50%; margin:auto;">
+            <thead>
+            <tr>
+              <th>Agregar</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>DNI</th>
+            </tr>
+            </thead>
+            <tbody id="tabla">
+            <% for(var i = 0; i < persona.length ; i++){ %>
+            <tr>
+              <td>
+                <div onclick="arreglo.push(persona[i].id)" class="btn btn-primary" id="agregar/<%= persona[i].id %>"><i class="fas fa-plus-square"></i></div>
+              </td>
+              <td><%= persona[i].nombre %></td>
+              <td><%= persona[i].apellido %></td>
+              <td><%= persona[i].dni %></td>
+            </tr>
+            <% } %>
+            </tbody>
+          </table>
         </form>
       </div>
       <div class="modal-footer">
