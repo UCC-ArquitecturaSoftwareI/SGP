@@ -2,10 +2,10 @@ async function setAs(per,clase, tr) {
   tr.classList.remove('bg-success');
   tr.classList.remove('bg-danger');
 
-  // TODO: Agregar icono spinner en el lugar del boton y despues sacar
+  // TODO: Quitar clase d-none y agregar despues.
   tr.classList.add('bg-info');
-  let res = await fetch('/asistencia/putAsistencia/'+clase+'/'+per);
 
+  let res = await fetch('/asistencia/putAsistencia/'+clase+'/'+per);
   let json = await res.json();
 
   tr.classList.remove('bg-info');

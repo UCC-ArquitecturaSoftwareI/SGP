@@ -18,13 +18,15 @@
           <h5 class="card-subtitle mb-2 text-muted"><%= docencia[i].docentes%></h5>
           <p class="card-text"> Hora de inicio: <%= docencia[i].horaInicioCurso %>hs</p>
           <p class="card-text"> Aula: <%= docencia[i].aula%> </p>
-
-          <a href="/asistencia/verAsistencia/<%= docencia[i].id %>" class="btn-outline-info btn"> Info
-            <i class="fas fa-eye"></i>
-          </a>
-          <a href="/asistencia/lista/<%= docencia[i].id %>" class="btn-outline-primary btn"> Nueva clase
+          <div style="right: 0; position: absolute; top:0;">
+            <a href="/asistencia/verAsistencia/<%= docencia[i].id %>" class="btn-outline-info btn"> Info
+              <i class="fas fa-eye"></i>
+            </a>
+            <br>
+            <a href="/asistencia/lista/<%= docencia[i].id %>" class="btn-outline-primary btn"> Nueva clase
               <i class="fas fa-plus"></i>
             </a>
+          </div>
         </div>
       </div>
     </td>
