@@ -1,0 +1,44 @@
+<% if(listaInscripciones && listaInscripciones.length > 0) {%>
+<div class="alert alert-dark" role="alert" style="background-color: #ffffff">
+  <h4 class="alert-heading"> <%= titulo %> </h4>
+
+<div id="resultadoPersonas" class="container">
+  <div class="row">
+    <% if( listaInscripciones ) { %>
+      <% listaInscripciones.forEach( function(item, idx){ %>
+
+      <div class="col-sm-4">
+        <div class="card border-secondary mb-3">
+          <div class="card-body">
+            <p class="card-text"><b>Apellido:</b> <%= item.persona.apellido %></p>
+            <p class="card-text"><b>Nombre:</b> <%= item.persona.nombre %></p>
+            <p class="card-text"><b>DNI:</b> <%= item.persona.dni %></p>
+
+
+            <a href="/Alumno/<%= item.persona.id %>" class="btn-info btn">
+              <i class="fas fa-eye"></i>
+            </a>
+
+            <button type="button" class="btn-danger btn" data-toggle="modal" data-target="#removeStudentModal"
+                    data-alumno-nombre="<%=item.persona.dni + ', ' + item.persona.apellido + ', ' + item.persona.nombre%>"
+                    data-alumno-id="<%=item.persona.id%>"
+                    data-curso-id="<%=item.curso.id%>"
+                    data-inscripcion-id="<%=item.id%>">
+              <i class="fas fa-minus-circle"></i>
+            </button>
+            <br>
+            <p class="card-text" style="margin-top: 1em;alignment: right"><small class="text-muted">Posicion: <%= idx %></small></p>
+        </div></div></div>
+        <%} ) %>
+    <% }%>
+  </div>
+</div>
+</div>
+<% } else { %>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading"> <%= titulo %> </h4>
+  <p><%= mensajeVacio1 %></p>
+  <hr>
+  <p class="mb-0"><%= mensajeVacio2 %></p>
+</div>
+<% } %>

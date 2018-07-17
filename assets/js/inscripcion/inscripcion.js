@@ -68,12 +68,17 @@ async function encontrarPersona(cursoID) {
 
     let personasNoInscriptas = personasJson.filter(persona => !inscriptosIds.includes(persona.id));
 
-    var tempInner =  '<div class="row">';
+    var tempInner =
+      '<div class="row">';
 
-    for( let persona of personasNoInscriptas){
-      if(!inscriptosJson.includes(persona)) {
-        tempInner += generateCard(persona, cursoID);
+    if(personasNoInscriptas.length > 0) {
+      for (let persona of personasNoInscriptas) {
+        if (!inscriptosJson.includes(persona)) {
+          tempInner += generateCard(persona, cursoID);
+        }
       }
+    } else {
+      tempInner += '<p>No se encontraron personas con ese criterio: ' + txtbox.value + '</p>';
     }
     tempInner +='</div>';
     deckPersonasBuscadas.innerHTML = tempInner;
