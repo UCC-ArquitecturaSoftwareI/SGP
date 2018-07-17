@@ -29,29 +29,22 @@ module.exports = {
     console.log(req.allParams());
     var cursoId = req.param('cursoId', '-1');
 
-
     var curso = await Curso.findOne({ id: cursoId});
 
 
     // Really? Fetch all records and filter later? WTF, there must be a better way. Anyways we need this working soon.
     var inscripcionesFull = await Inscripcion.find().populate('curso').populate('persona').sort([{ updatedAt: 'ASC'}]);
-
     var inscriptos = inscripcionesFull.filter(i => i.curso.id.toString() === cursoId && i.baja === false); //.slice(0,tamanoCurso - 1);
 
-    // (e.g. [ { name: 'ASC' }, { age: 'DESC'} ]).
-    // instriptos = inscriptos.sort({ updatedAt: 'DESC'});
 
 
     var enespera = null;
-
     var tamanoCurso = curso.cupo;
-
 
     if(inscriptos.length > tamanoCurso) {
       enespera = inscriptos.slice(tamanoCurso, inscriptos.length);
       inscriptos = inscriptos.slice(0, tamanoCurso);
     }
-
 
     res.view('pages/inscripcion/listaInscriptos.ejs', { curso: curso, inscriptos: inscriptos, enespera:  enespera});
   },
@@ -89,14 +82,7 @@ module.exports = {
 
   mostrarInscriptos: async function (req, res) {
 
-    let param = req.allParams();
-    let cursoId = param.curso;
-
-    var inscripciones = await Inscripcion.find({curso: cursoId}).populate('persona');
-
-    // filtramos y eliminamos inscripciones no validas...
-    inscripciones = inscripciones.filter(curso => curso.baja === false && curso.persona.borrada === false);
-    var inscriptos = inscripciones.map(inscripcion => inscripcion.persona);
+    var inscriptos = await Inscripcion.getInscriptos({cursoId: req.allParams().curso});
 
     res.json(inscriptos);
   },

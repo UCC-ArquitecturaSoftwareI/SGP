@@ -8,17 +8,17 @@
   <h4 class="alert-heading"> Busqueda de Alumnos </h4>
   <div class="input-group mb-3">
     <label>Buscar persona:
-      <input id="input-busqueda-persona" type="text" data-provide="typeahead" placeholder="Persona" name="buscador" onkeyup="encontrarPersona(<%= curso.id %>)">
+      <input id="input-busqueda-curso" type="text" data-provide="typeahead" placeholder="Persona" name="buscador" onkeyup="encontrarPersona(<%= curso.id %>)">
     </label>
   </div>
   <div id="resultadoPersonas" class="container"></div>
 </div>
 
 
-<%- partial ('partials/deckPersonas.ejs', {listaInscripciones: inscriptos, titulo: "Inscriptos"
+<%- partial ('partials/deckPersonas.ejs', {listaInscripciones: inscriptos, curso: curso, titulo: "Inscriptos (" +  (curso.cupo - inscriptos.length) + " lugares disponibles)"
   , mensajeVacio1: "Uff no hay personas inscriptas a este curso, utiliza el buscador de personas (arriba) para agregar alumnos."
   , mensajeVacio2: "En cuanto agregues alumnos, aqui aparecera una lista de inscriptos"}) %>
-<%- partial ('partials/deckPersonas.ejs', {listaInscripciones: enespera, titulo: "Lista de Espera"
+<%- partial ('partials/deckPersonas.ejs', {listaInscripciones: enespera, curso: curso, titulo: "Lista de Espera"
   , mensajeVacio1: "No hay alumnos en la lista de espera."
   , mensajeVacio2: "En cuanto los inscriptos superen el cupo de " + curso.cupo + " la lista de espera comenzara a llenarse."}) %>
 

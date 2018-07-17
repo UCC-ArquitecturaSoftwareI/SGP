@@ -2,8 +2,13 @@ async function buscarCurso() {
 
   // debugger;
 
-  let txtbox = document.querySelector('input[name=\'nombreCursoBuscar\']');
-  if (txtbox.value.length >= 3) {
+  let txtbox = document.querySelector('input[name=\'buscador\']');
+  let t = document.getElementById('tabla-container');
+
+
+  if(txtbox.value.length < 3) {
+    t.innerHTML = '';
+  } else {
 
 
 
@@ -19,18 +24,15 @@ async function buscarCurso() {
 
     console.log(json);
 
-    let t = document.getElementById('tabla');
 
-    t.innerHTML = '';
+    let tempHTML = '<div class="row">';
+
+
     for( let dato of json){
-      t.innerHTML += '<tr>' +
-        '<td>'+dato.nombre+'</td>' +
-        '<td>'+dato.descripcion+'</td>' +
-        '<td>      <a href="/inscripcion/cursoDetalle/' + dato.id + '" class="btn-info btn">\n' +
-        '        <i class="fas fa-pencil-alt"></i>\n' +
-        '      </a></td>' +
-        '</tr>';
+      tempHTML += generateCursoCard(dato);
     }
+    tempHTML +='</div>';
+    t.innerHTML = tempHTML;
   }
 }
 
@@ -74,7 +76,7 @@ async function encontrarPersona(cursoID) {
     if(personasNoInscriptas.length > 0) {
       for (let persona of personasNoInscriptas) {
         if (!inscriptosJson.includes(persona)) {
-          tempInner += generateCard(persona, cursoID);
+          tempInner += generatePersonaCard(persona, cursoID);
         }
       }
     } else {
@@ -86,7 +88,7 @@ async function encontrarPersona(cursoID) {
   }
 }
 
-function generateCard(persona, cursoID) {
+function generatePersonaCard(persona, cursoID) {
 
   var result = '<div class="col-sm-4">' +
     '<div class="card border-secondary mb-3">' +
@@ -98,7 +100,24 @@ function generateCard(persona, cursoID) {
     'class="btn-info btn" style="justify-content: center">' +
     '<i class=" fas fa-plus-circle"></i>Agregar' +
     '</button> '+
-    '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>'+
+    '<p class="card-text"><small class="text-muted">Agregado el dia ' + new Date(persona.createdAt).toLocaleDateString() + '</small></p>'+
+    '</div></div></div>';
+
+  return result;
+}
+
+function generateCursoCard(curso) {
+
+  var result = '<div class="col-sm-4">' +
+    '<div class="card border-secondary mb-3">' +
+    '<div class="card-body">' +
+    '<h3 class="card-title">' + curso.nombre + '</h3>' +
+    '<p class="card-text"><b>Descripcion:</b>: ' + curso.descripcion + '</p>' +
+    '<p class="card-text"><b>Cupo:</b> ' + curso.cupo + '</p>' +
+    '<a href="/inscripcion/cursoDetalle/' + curso.id + '" class="btn-info btn">' +
+    '<i class=" fas fa-plus-circle"></i>Gestionar' +
+    '</a> '+
+    '<p class="card-text"><small class="text-muted">Creado el dia ' + new Date(curso.createdAt).toLocaleDateString() + '</small></p>'+
     '</div></div></div>';
 
   return result;
@@ -109,13 +128,13 @@ async function inscribirPersonaACurso(persona, curso) {
   let res = await fetch('/inscripcion/inscribir', {
     method: 'POST',
     credentials: 'include',
-    body: JSON.stringify( {cursoId: curso, personaId: persona} ), // data can be `string` or {object}!
+    body: JSON.stringify({cursoId: curso, personaId: persona}), // data can be `string` or {object}!
     headers: {
       'Content-Type': 'application/json',
     }
   });
 
-  if(res.status === 200 ) {
+  if (res.status === 200) {
     // Refresh after successful removal
     location.reload();
   }
