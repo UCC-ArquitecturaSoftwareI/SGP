@@ -177,4 +177,9 @@ module.exports.routes = {
     action: 'verAsistencia',
   },
 
+
+  '/asistencia/putAsistencia/:clase/:persona':{
+    controller:'AsistenciaController',
+    action: 'putAsistencia',
+  },
 };

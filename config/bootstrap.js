@@ -286,10 +286,10 @@ module.exports.bootstrap = async function (done) {
 
       }
     }
-    const asisten = await Asistencia.createEach(asistencias).fetch();
+    //    const asisten = await Asistencia.createEach(asistencias).fetch();
 
 
-    sails.log(`Se crearon ${asisten.length} Asistencia`);
+    //sails.log(`Se crearon ${asisten.length} Asistencia`);
 
 
 

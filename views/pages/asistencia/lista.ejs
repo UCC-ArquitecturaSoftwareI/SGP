@@ -11,7 +11,7 @@
   </thead>
   <tbody id="table">
   <% for(var i=0; i<pers.length; i++){ %>
-  <tr>
+  <tr onclick="setAs(<%= pers[i].id %>,<%= clase %>, this)">
     <td id="p1"><%= pers[i].nombre %></td>
     <td id="p1"><%= pers[i].apellido %></td>
     <td>
