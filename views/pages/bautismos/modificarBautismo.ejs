@@ -1,51 +1,66 @@
 <script>
   if(typeof arreglo === 'undefined')
     var arreglo = [];
+  /*
+  if(typeof arreglo2 === 'undefined'){
+      var arreglo2 = [];
+      for(var i=0; i<a.padrinos.length; i++){
+          arreglo2[i] = a.padrinos[i].id;
+      }
+  }
+  */
 </script>
 
 <div class="container">
-  <form method="post" action="/addBautismo" id="my-form">
+  <form method="post" action="/modBautismo" id="my-form">
     <div class="form-group row col-12 flex-fill">
-      <label for="inputpadrino" class="col-form-label">Padrino(s) y Madrina(s)</label>
+      <label for="listaPadrino" class="col-form-label">Padrino(s) y Madrina(s) actuales:</label>
+      <div id="listaPadrinos" class="form-group row col-12 flex-column">
+        <ul>
+          <% for(let i = 0; i<a.padrinos.length; i++) { %>
+          <li><%= a.padrinos[i].nombre %> <%= a.padrinos[i].apellido %></li>
+          <% } %>
+        </ul>
+      </div>
       <div class="form-group row col-12">
         <div class="col-auto">
           <button type="button" class="btn btn-light" data-toggle="modal" data-target="#ModalPadrino">
-            Seleccionar Padrinos y Madrinas</button>
+            Seleccionar Nuevos Padrinos y Madrinas</button>
         </div>
         <div class="col-auto">
           <a class="btn btn-primary" href="/persona/formulario/0" role="button">Nueva Persona</a>
         </div>
       </div>
-      <div id="listaPadrinos" class="form-group row col-12 flex-column">
-      </div>
+    </div>
+    <input type="hidden" name="inputid" id="inputid" value="<%= a.id %>">
+    <div class="form-group row col-12">
+      <label for="inputnombre">Nombre y Apellido actual: <b><%= a.nombre %></b></label>
+      <input name="inputnombre" class="form-control" id="inputnombre" type="text" placeholder="Nuevo Nombre y Apellido">
     </div>
     <div class="form-group row col-12">
-      <label for="inputnombre">Nombre y Apellido</label>
-      <input name="inputnombre" class="form-control" id="inputnombre" type="text" placeholder="Nombre y apellido del niño">
+      <label for="inputdni">DNI actual: <b><%= a.dni %></b></label>
+      <input name="inputdni" class="form-control" id="inputdni" type="text" placeholder="Nuevo DNI">
     </div>
     <div class="form-group row col-12">
-      <label for="inputdni">DNI</label>
-      <input name="inputdni" class="form-control" id="inputdni" type="text" placeholder="DNI del niño">
+      <% var fecha = new Date(a.fecha * 1); %>
+      <% var strfecha = ("00"+fecha.getDate()).substr(-2) + " / " + ("00"+(fecha.getMonth() + 1)).substr(-2) + " / " + fecha.getFullYear()%>
+      <label for="inputfecha">Fecha actual: <b><%= strfecha %></b></label>
+      <input name="inputfecha" class="form-control" id="inputfecha" type="date">
     </div>
     <div class="form-group row col-12">
-      <label for="inputfecha">Fecha</label>
-      <input name="inputfecha" class="form-control" id="inputfecha" type="date" placeholder="dd / mm / aaaa">
-    </div>
-    <div class="form-group row col-12">
-      <label for="inputturno">Turno</label>
+      <label for="inputturno">Turno actual: <b><%= a.turno %></b></label>
       <select name="inputturno" class="form-control" id="inputturno">
-        <option value="0">Turno 0</option>
-        <option value="1">Turno 1</option>
-        <option value="2">Turno 2</option>
-        <option value="3">Turno 3</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
       </select>
     </div>
     <div class="form-group row col-12">
-      <input type="submit" class="btn btn-primary btn-block" value="Agregar">
+      <input type="submit" class="btn btn-primary btn-block" value="Modificar">
     </div>
   </form>
 </div>
-
 
 <!-- Modal Padrinos-->
 <div class="modal fade" id="ModalPadrino" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

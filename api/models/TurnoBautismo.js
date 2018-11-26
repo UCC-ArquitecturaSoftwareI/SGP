@@ -34,6 +34,11 @@ module.exports = {
       required: true
     },
 
+    eliminado: {
+      type: 'boolean',
+      defaultsTo: false
+    },
+
   },
 
 };

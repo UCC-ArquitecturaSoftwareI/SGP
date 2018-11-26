@@ -106,7 +106,7 @@ module.exports.routes = {
    */
   '/bautismos/add': {
     controller: 'TurnoBautismoController',
-    action: 'listarpersonas',
+    action: 'listarpersonas'
   },
   '/bautismos': {
     controller: 'TurnoBautismoController',
@@ -116,19 +116,28 @@ module.exports.routes = {
     controller: 'TurnoBautismoController',
     action: 'ver'
   },
-  /*
+  '/bautismos/modificar/:id': {
+    controller: 'TurnoBautismoController',
+    action: 'vermodificar',
+  },
   'POST /addBautismo': {
     controller: 'TurnoBautismoController',
     action: 'agregar',
   },
-  */
+  'POST /modBautismo': {
+    controller: 'TurnoBautismoController',
+    action: 'modificar',
+  },
   '/bautismos/eliminar/:id': {
     controller: 'TurnoBautismoController',
-    action: 'eliminar',
+    action: 'eliminar'
   },
   '/bautismos/buscar': 'TurnoBautismoController.buscarJSON',
   '/bautismos/listar': 'TurnoBautismoController.listarJSON',
+  /*
   '/bautismos/listarpersonas': 'TurnoBautismoController.listarpersonasJSON',
+  '/bautismos/buscarpadrino': 'TurnoBautismoController.listarpadrino',
+  */
   /*
         ABM Cursos (ABMCursos)
    */
