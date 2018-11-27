@@ -135,10 +135,6 @@ module.exports.routes = {
   '/bautismos/buscar': 'TurnoBautismoController.buscarJSON',
   '/bautismos/listar': 'TurnoBautismoController.listarJSON',
   /*
-  '/bautismos/listarpersonas': 'TurnoBautismoController.listarpersonasJSON',
-  '/bautismos/buscarpadrino': 'TurnoBautismoController.listarpadrino',
-  */
-  /*
         ABM Cursos (ABMCursos)
    */
 

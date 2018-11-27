@@ -1,8 +1,3 @@
-<script>
-  if(typeof arreglo === 'undefined')
-    var arreglo = [];
-</script>
-
 <div class="container">
   <form method="post" action="/addBautismo" id="my-form">
     <div class="form-group row col-12 flex-fill">
@@ -21,19 +16,19 @@
     </div>
     <div class="form-group row col-12">
       <label for="inputnombre">Nombre y Apellido</label>
-      <input name="inputnombre" class="form-control" id="inputnombre" type="text" placeholder="Nombre y apellido del niño">
+      <input name="inputnombre" class="form-control" id="inputnombre" type="text" placeholder="Nombre y apellido del niño" required>
     </div>
     <div class="form-group row col-12">
       <label for="inputdni">DNI</label>
-      <input name="inputdni" class="form-control" id="inputdni" type="text" placeholder="DNI del niño">
+      <input name="inputdni" class="form-control" id="inputdni" type="text" placeholder="DNI del niño" required>
     </div>
     <div class="form-group row col-12">
       <label for="inputfecha">Fecha</label>
-      <input name="inputfecha" class="form-control" id="inputfecha" type="date" placeholder="dd / mm / aaaa">
+      <input name="inputfecha" class="form-control" id="inputfecha" type="date" placeholder="dd / mm / aaaa" required>
     </div>
     <div class="form-group row col-12">
       <label for="inputturno">Turno</label>
-      <select name="inputturno" class="form-control" id="inputturno">
+      <select name="inputturno" class="form-control" id="inputturno" required>
         <option value="0">Turno 0</option>
         <option value="1">Turno 1</option>
         <option value="2">Turno 2</option>
@@ -41,7 +36,12 @@
       </select>
     </div>
     <div class="form-group row col-12">
-      <input type="submit" class="btn btn-primary btn-block" value="Agregar">
+      <div class="col-auto">
+        <input type="submit" class="btn btn-primary btn-block" value="Agregar">
+      </div>
+      <div class="col-auto">
+        <a href="javascript:history.back(1)" class="btn btn-secondary">Volver</a>
+      </div>
     </div>
   </form>
 </div>

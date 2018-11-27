@@ -1,16 +1,3 @@
-<script>
-  if(typeof arreglo === 'undefined')
-    var arreglo = [];
-  /*
-  if(typeof arreglo2 === 'undefined'){
-      var arreglo2 = [];
-      for(var i=0; i<a.padrinos.length; i++){
-          arreglo2[i] = a.padrinos[i].id;
-      }
-  }
-  */
-</script>
-
 <div class="container">
   <form method="post" action="/modBautismo" id="my-form">
     <div class="form-group row col-12 flex-fill">
@@ -35,21 +22,21 @@
     <input type="hidden" name="inputid" id="inputid" value="<%= a.id %>">
     <div class="form-group row col-12">
       <label for="inputnombre">Nombre y Apellido actual: <b><%= a.nombre %></b></label>
-      <input name="inputnombre" class="form-control" id="inputnombre" type="text" placeholder="Nuevo Nombre y Apellido">
+      <input name="inputnombre" class="form-control" id="inputnombre" type="text" placeholder="Nuevo Nombre y Apellido" required>
     </div>
     <div class="form-group row col-12">
       <label for="inputdni">DNI actual: <b><%= a.dni %></b></label>
-      <input name="inputdni" class="form-control" id="inputdni" type="text" placeholder="Nuevo DNI">
+      <input name="inputdni" class="form-control" id="inputdni" type="text" placeholder="Nuevo DNI" required>
     </div>
     <div class="form-group row col-12">
       <% var fecha = new Date(a.fecha * 1); %>
       <% var strfecha = ("00"+fecha.getDate()).substr(-2) + " / " + ("00"+(fecha.getMonth() + 1)).substr(-2) + " / " + fecha.getFullYear()%>
       <label for="inputfecha">Fecha actual: <b><%= strfecha %></b></label>
-      <input name="inputfecha" class="form-control" id="inputfecha" type="date">
+      <input name="inputfecha" class="form-control" id="inputfecha" type="date" required>
     </div>
     <div class="form-group row col-12">
       <label for="inputturno">Turno actual: <b><%= a.turno %></b></label>
-      <select name="inputturno" class="form-control" id="inputturno">
+      <select name="inputturno" class="form-control" id="inputturno" required>
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -57,7 +44,12 @@
       </select>
     </div>
     <div class="form-group row col-12">
-      <input type="submit" class="btn btn-primary btn-block" value="Modificar">
+      <div class="col-auto">
+        <input type="submit" class="btn btn-primary btn-block" value="Modificar">
+      </div>
+      <div class="col-auto">
+        <a href="javascript:history.back(1)" class="btn btn-secondary">Volver</a>
+      </div>
     </div>
   </form>
 </div>
@@ -89,7 +81,12 @@
             <tr>
               <td>
                 <div class="form-check">
+                  <% if(a.idspadrinos.includes(persona[i].id)) {%>
+                  <input class="form-check-input position-static" type="checkbox" id="blankCheckbox<%= persona[i].id %>" value="<%= persona[i].id %>" checked>
+                  <% } %>
+                  <% if(!(a.idspadrinos.includes(persona[i].id))) { %>
                   <input class="form-check-input position-static" type="checkbox" id="blankCheckbox<%= persona[i].id %>" value="<%= persona[i].id %>">
+                  <% } %>
                 </div>
               </td>
               <td><%= persona[i].nombre %></td>

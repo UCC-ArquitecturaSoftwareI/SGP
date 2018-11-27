@@ -118,9 +118,21 @@ module.exports = {
     var ret;
     var bautismo = await TurnoBautismo.find({id: req.allParams().id}).populate('padrinos');
 
+    //console.log(bautismo);
+    //console.log(JSON.stringify(bautismo[0].padrinos));
+
+    var ids = [];
+
+    for(var i = 0; i<bautismo[0].padrinos.length; i++){
+      ids[i] = bautismo[0].padrinos[i].id;
+    }
+
+    //console.log(JSON.stringify(ids));
+
     ret = {
       id: bautismo[0].id,
       padrinos: bautismo[0].padrinos,
+      idspadrinos: ids,
       nombre: bautismo[0].nombre,
       dni: bautismo[0].dni,
       fecha: bautismo[0].fecha,
@@ -130,30 +142,10 @@ module.exports = {
     var personas = await Persona.find({});
     res.view('pages/bautismos/modificarBautismo', {a: ret, persona: personas});
   },
-  /**
-   listarpadrino: async function (req, res) {
-    var param = req.allParams();
-    var personas = JSON.parse(param.arreglo);
-    var ret;
-    var unidad;
-    for(var i = 0; i<personas.length; i++){
-      unidad = await Persona.find({id: personas[i]});
-      ret.push(unidad);
-    }
-    res.json(ret);
-  },
-   */
   listarpersonas: async function (req, res) {
     var personas = await Persona.find({});
 
     res.view('pages/bautismos/addBautismo', {persona: personas});
   },
-  /**
-   listarpersonasJSON: async function (req, res) {
-    var personas = await Persona.find({});
-
-    res.json(personas);
-  }
-   */
 };
 
