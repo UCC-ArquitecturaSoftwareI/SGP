@@ -43,7 +43,6 @@ module.exports = {
   lista: async function (req, res) {
     var course = await Curso.findOne({id: req.param('id')}).populate('inscriptos');
     var clase = 1;
-    console.log(course);
     var personas = [];
     for (var inscripcion of course.inscriptos) {
       personas.push(
@@ -69,6 +68,8 @@ module.exports = {
   curso: async function (req, res) {
     var user = await Usuario.findOne({id: req.session.usuario.id}).populate('docencia');
     res.view('pages/asistencia/curso', {docencia: user.docencia});
+    console.log(user);
+
   },
   putAsistencia: async function (req, res) {
     // TODO: Crear una instancia de asistencia con true si no existe o toglearla si existe.
