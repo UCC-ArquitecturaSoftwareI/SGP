@@ -8,14 +8,16 @@ module.exports = {
   verAsistencia: async function (req, res) {
 
     var idCurso = req.param('id');
+    //busco a todos los inscripos en ese ID de curso
     var course = await Curso.findOne({id: idCurso}).populate('inscriptos');
     var personas = [];
+    //lo inserto dentro de un array con todas las personas
     for (var inscripcion of course.inscriptos) {
       personas.push(
          inscripcion.persona
       );
     }
-    console.log(personas);
+    //calculo la asistencia de cada uno y lo inserto en un array nuevamente
     var asistencia = [];
     for (var i = 0; i < personas.length; i++) {
       var tot = await Asistencia.count({persona: personas[i], curso: idCurso});
@@ -25,13 +27,14 @@ module.exports = {
         perc = 0;
       }
 
-
       var tmp = personas[i];
       var per = await Persona.findOne({id: tmp});
       asistencia.push({
+        id: per.id,
         nombre: per.nombre,
         apellido: per.apellido,
         porcentaje: perc,
+        idCurso: req.param('id'),
       });
     }
 
@@ -40,6 +43,7 @@ module.exports = {
     res.view('pages/asistencia/verAsistencia', {asist: asistencia});
   },
 
+  //esta funcion lista todos los inscriptos nuevamente pero para tomar lista
   lista: async function (req, res) {
     var course = await Curso.findOne({id: req.param('id')}).populate('inscriptos');
     var clase = 1;
@@ -65,14 +69,47 @@ module.exports = {
     res.view('pages/asistencia/lista', {pers: people, clase: clase});
 
   },
+
+  //lista todos los cursos del docente
   curso: async function (req, res) {
-    var user = await Usuario.findOne({id: req.session.usuario.id}).populate('docencia');
-    res.view('pages/asistencia/curso', {docencia: user.docencia});
-    console.log(user);
+    var cursos = await Usuario.findOne({id: req.session.usuario.id}).populate('docencia');
+    res.view('pages/asistencia/curso', {docencia: cursos.docencia});
+    console.log(cursos);
 
   },
+
+  //funcion para insertar asistencia a almuno.
   putAsistencia: async function (req, res) {
     // TODO: Crear una instancia de asistencia con true si no existe o toglearla si existe.
     res.json({asistio: Math.random() > 0.5});
   },
+
+  //lista todas las clases asistidas por el almuno seleccionado
+  verAsistenciaIndividual: async function (req, res){
+    var al = await Asistencia.find({ where:
+                                        {persona: req.param('idPersona'), curso: req.param('idCurso')},
+                                        sort: 'clase ASC'
+                                        });
+    var persona = await Persona.findOne({id: req.param('idPersona')});
+    console.log(al);
+
+    var alumno =[];
+    for (var i=0; i<al.length; i++){
+      if (al[i].asistio === true) {
+        al[i].asistio = 'Presente';
+        alumno.push(
+          al[i]
+        )
+      }else{
+        al[i].asistio = 'Ausente';
+        alumno.push(
+          al[i]
+        )
+      }
+    }
+
+    console.log(alumno);
+    res.view('pages/asistencia/indexAsistencia', {alumno, persona} )
+  },
+
 };

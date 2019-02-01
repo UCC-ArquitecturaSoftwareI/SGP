@@ -222,4 +222,9 @@ module.exports.routes = {
     controller:'AsistenciaController',
     action: 'putAsistencia',
   },
+
+  '/asistencia/indexAsistencia/:idPersona/:idCurso':{
+    controller: 'AsistenciaController',
+    action: 'verAsistenciaIndividual',
+  },
 };

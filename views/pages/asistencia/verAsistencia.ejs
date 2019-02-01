@@ -6,6 +6,7 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Asistencias</th>
+    <th>Editar</th>
   </tr>
   </thead>
   <tbody id="table">
@@ -14,7 +15,11 @@
     <td><%= asist[i].nombre %></td>
     <td><%= asist[i].apellido %></td>
     <td><%= asist[i].porcentaje %></td>
+    <td><a href="/asistencia/indexAsistencia/<%= asist[i].id%>/<%=asist[i].idCurso%>" class="btn-outline-info btn">
+        <i class="fas fa-pencil-alt"></i>
+      </a></td>
   </tr>
   <% } %>
   </tbody>
 </table>
+
