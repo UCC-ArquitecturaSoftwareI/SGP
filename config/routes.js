@@ -218,7 +218,7 @@ module.exports.routes = {
   },
 
 
-  '/asistencia/putAsistencia/:clase/:persona':{
+  '/asistencia/putAsistencia/:clase/:persona/:curso':{
     controller:'AsistenciaController',
     action: 'putAsistencia',
   },
@@ -226,5 +226,10 @@ module.exports.routes = {
   '/asistencia/indexAsistencia/:idPersona/:idCurso':{
     controller: 'AsistenciaController',
     action: 'verAsistenciaIndividual',
+  },
+
+  '/asistencia/editarAsistencia/:idAsistencia':{
+    controller: 'AsistenciaController',
+    action: 'cambiarAsistencia',
   },
 };

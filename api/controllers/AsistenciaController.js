@@ -59,14 +59,21 @@ module.exports = {
         await Persona.findOne({id: personas[i]})
       );
     }
+    console.log(people);
+
     var tmp = await Asistencia.find({curso: req.param('id')}).sort('clase DESC');
     if (tmp[0]) {
       clase = tmp[0].clase + 1;
     }
+
+    var cursoTmp = req.param('id');
+
+    console.log(cursoTmp);
+
     console.log(clase);
 
 
-    res.view('pages/asistencia/lista', {pers: people, clase: clase});
+    res.view('pages/asistencia/lista', {pers: people, clase: clase, cursoTmp});
 
   },
 
@@ -80,16 +87,22 @@ module.exports = {
 
   //funcion para insertar asistencia a almuno.
   putAsistencia: async function (req, res) {
-    // TODO: Crear una instancia de asistencia con true si no existe o toglearla si existe.
-    res.json({asistio: Math.random() > 0.5});
+    var datos = {
+      clase: await req.param('clase'),
+      persona: await req.param('persona'),
+      curso: await req.param('curso'),
+      asistio: true,
+    }
+    // res.json({asistio: Math.random() > 0.5});
+
+    data = await Asistencia.create(datos);
+
   },
 
   //lista todas las clases asistidas por el almuno seleccionado
   verAsistenciaIndividual: async function (req, res){
     var al = await Asistencia.find({ where:
-                                        {persona: req.param('idPersona'), curso: req.param('idCurso')},
-                                        sort: 'clase ASC'
-                                        });
+        {persona: req.param('idPersona'), curso: req.param('idCurso')}, sort: 'clase ASC'});
     var persona = await Persona.findOne({id: req.param('idPersona')});
     console.log(al);
 
@@ -106,10 +119,22 @@ module.exports = {
           al[i]
         )
       }
-    }
+    };
 
     console.log(alumno);
     res.view('pages/asistencia/indexAsistencia', {alumno, persona} )
   },
+
+  cambiarAsistencia: async function(req, res){
+    var asistencia = await Asistencia.findOne({id: req.param('idAsistencia')});
+
+    if (asistencia.asistio === true) {
+      asistencia.asistio = false;
+    } else{
+      asistencia.asistio = true;
+    }
+
+    data = await Asistencia.update({id: req.param('idAsistencia')},asistencia);
+  }
 
 };
