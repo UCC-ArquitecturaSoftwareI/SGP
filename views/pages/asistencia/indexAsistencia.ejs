@@ -14,7 +14,8 @@
     <tr>
       <td><%= alumno[i].clase %></td>
       <td><%= alumno[i].createdAt%></td>
-      <td><button onclick="cambiarA(<%=alumno[i].id%>)" type="button" class="btn btn-outline-dark"><%= alumno[i].asistio%> </button>
+      <td><button onclick="cambiarA(<%=alumno[i].id%>); location.reload(true);"
+                  type="button" class="btn btn-outline-dark"><%= alumno[i].asistio%> </button>
       </td>
     </tr>
     <% } %>

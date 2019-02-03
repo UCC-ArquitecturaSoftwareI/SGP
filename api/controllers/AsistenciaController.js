@@ -22,7 +22,7 @@ module.exports = {
     for (var i = 0; i < personas.length; i++) {
       var tot = await Asistencia.count({persona: personas[i], curso: idCurso});
       var real = await Asistencia.count({persona: personas[i], curso: idCurso, asistio: true});
-      var perc = ((real * 100) / tot);
+      var perc = ((real * 100) / tot).toFixed(0);
       if (isNaN(perc)) {
         perc = 0;
       }
@@ -91,10 +91,10 @@ module.exports = {
       clase: await req.param('clase'),
       persona: await req.param('persona'),
       curso: await req.param('curso'),
-      asistio: true,
+      asistio: Math.random() > 0.5,
     }
-    // res.json({asistio: Math.random() > 0.5});
 
+    console.log(datos);
     data = await Asistencia.create(datos);
 
   },
