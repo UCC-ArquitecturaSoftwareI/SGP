@@ -94,8 +94,21 @@ module.exports = {
       asistio: Math.random() > 0.5,
     }
 
+    var al = await Asistencia.findOne({ where:
+        {persona: datos.persona, clase: datos.clase},
+        });
+
+    console.log('dato de busqueda ', al);
+
+    if(al === undefined) {
+      data = await Asistencia.create(datos);
+    } else{
+      data = await Asistencia.update({id: al.id}, datos);
+    }
+
     console.log(datos);
-    data = await Asistencia.create(datos);
+    //data = await Asistencia.create(datos);
+    res.json(datos);
 
   },
 
