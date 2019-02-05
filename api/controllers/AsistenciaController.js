@@ -87,27 +87,32 @@ module.exports = {
 
   //funcion para insertar asistencia a almuno.
   putAsistencia: async function (req, res) {
+    //por defecto creo la asistencia en true
     var datos = {
       clase: await req.param('clase'),
       persona: await req.param('persona'),
       curso: await req.param('curso'),
-      asistio: Math.random() > 0.5,
+      asistio: true,
     }
 
     var al = await Asistencia.findOne({ where:
         {persona: datos.persona, clase: datos.clase},
         });
 
-    console.log('dato de busqueda ', al);
-
+    // chequeo si no existe la asistencia y la creo
     if(al === undefined) {
       data = await Asistencia.create(datos);
-    } else{
-      data = await Asistencia.update({id: al.id}, datos);
+    }else{
+      //si no entro en la primera significa que quiere cambiar el estado de la asistencia
+      if (al.asistio === true){
+        datos.asistio = false;
+        data = await Asistencia.update({id: al.id}, datos);
+      }else{
+        datos.asistio = true;
+        data = await Asistencia.update({id: al.id}, datos);
+      }
     }
 
-    console.log(datos);
-    //data = await Asistencia.create(datos);
     res.json(datos);
 
   },
